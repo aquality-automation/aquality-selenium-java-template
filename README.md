@@ -1,1 +1,17 @@
-# aquality-templates
+# Templates
+
+This repository contains templates for all Aquality Automation family libraries.
+
+### Structure
+
+- [**java/**](./java)
+  - [**aquality-selenium-template**](./java/aquality-selenium-template)
+  - **aquality-appium-mobile-template**
+- **dotnet/**
+  - **aquality-selenium-template**
+  - **aquality-appium-mobile-template**
+  - **aquality-winappdriver-template**
+
+### How to use
+
+Just download necessary template and go ahead!
