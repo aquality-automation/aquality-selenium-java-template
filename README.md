@@ -6,8 +6,8 @@ This repository contains templates for all *aquality automation* family librarie
 
 - [**java/**](./java)
   - [**aquality-selenium-template**](./java/aquality-selenium-template)
-  - **aquality-appium-mobile-template**
-- **dotnet/**
+  - **aquality-appium-mobile-template** (in progress)
+- **dotnet/** (in progress)
   - **aquality-selenium-template**
   - **aquality-appium-mobile-template**
   - **aquality-winappdriver-template**
