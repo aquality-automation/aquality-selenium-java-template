@@ -1,4 +1,4 @@
-package aquality.selenium.template.steps.hooks;
+package aquality.selenium.template.glue.hooks;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.Browser;
@@ -14,7 +14,7 @@ public class BrowserHooks {
         browser.goTo(Configuration.getCurrentEnvironment().getStartUrl());
     }
 
-    @After
+    @After(order = 0)
     public void closeBrowser() {
         AqualityServices.getBrowser().quit();
     }

@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = {"src/test/java/aquality/selenium/template/features"},
-        glue = {"aquality.selenium.template.steps"}
+        glue = {"aquality.selenium.template.glue"}
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
