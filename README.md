@@ -1,6 +1,6 @@
 # Templates
 
-This repository contains templates for all Aquality Automation family libraries.
+This repository contains templates for all *aquality automation* family libraries.
 
 ### Structure
 
