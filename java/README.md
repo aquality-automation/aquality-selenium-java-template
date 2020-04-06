@@ -1,1 +1,0 @@
-# aquality-templates
