@@ -19,7 +19,10 @@
         "download.default_directory": "//home//selenium//downloads"
       },
       "startArguments": [
-        "window-size=1920,1080"
+        "window-size=1920,1080",
+        "--no-sandbox",
+        "--disable-popup-blocking",
+        "--disable-gpu"
       ]
     },
     "firefox": {
@@ -58,8 +61,8 @@
   "timeouts": {
     "timeoutImplicit": 0,
     "timeoutCondition": 30,
-    "timeoutScript": 10,
-    "timeoutPageLoad": 15,
+    "timeoutScript": 20,
+    "timeoutPageLoad": 30,
     "timeoutPollingInterval": 300,
     "timeoutCommand": 120
   },

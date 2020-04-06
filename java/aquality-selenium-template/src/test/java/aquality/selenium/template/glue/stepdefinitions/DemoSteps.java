@@ -53,11 +53,7 @@ public class DemoSteps {
 
     @Then("Notification about empty fields is present")
     public void checkEmptyFieldWarning() {
-        Assert.assertTrue(contactUsPage.isEmailValidationMessagePresent(), "Email validation message should be displayed");
-    }
-
-    @Then("Notification about empty fields isn't present")
-    public void notificationAboutEmptyFieldsIsNotPresent() {
-        Assert.assertFalse(contactUsPage.isEmailValidationMessagePresent(), "Email validation message should not be displayed");
+        Assert.assertTrue(contactUsPage.isEmailValidationMessagePresent(),
+                "Email validation message should be displayed");
     }
 }
