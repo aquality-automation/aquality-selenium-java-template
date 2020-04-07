@@ -20,7 +20,7 @@ public class DemoSteps {
     private final ContactUsPage contactUsPage = new ContactUsPage();
 
     @Given("Main page is opened")
-    public void checkMainPageIsOpened() {
+    public void mainPageIsOpened() {
         AqualityServices.getBrowser().goTo(Configuration.getCurrentEnvironment().getStartUrl());
     }
 
