@@ -32,7 +32,7 @@ public class ScreenshotHooks {
             baos.flush();
             return baos.toByteArray();
         } catch (IOException ioe) {
-            AqualityServices.getLogger().warn(String.format("IO Exception during preparing screenshot of full page%nException message: %s", ioe.getMessage()));
+            AqualityServices.getLogger().debug("IO Exception during preparing screenshot of full page%nException message", ioe);
             return new byte[] {};
         }
     }
