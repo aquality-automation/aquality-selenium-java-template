@@ -1,5 +1,7 @@
 # Aquality Selenium Template Project
 
+Template for [aquality-selenium-java](https://github.com/aquality-automation/aquality-selenium-java) library.
+
 ### Project structure
 
 - **src/test/java/aquality/selenium/template/**
