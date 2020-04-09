@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/aquality-automation/aquality-automation/_apis/build/status/aquality-automation.aquality-selenium-java-template?branchName=master)](https://dev.azure.com/aquality-automation/aquality-automation/_build/latest?definitionId=9&branchName=master)
+
 # Aquality Selenium Template Project
 
 Template for [aquality-selenium-java](https://github.com/aquality-automation/aquality-selenium-java) library.
