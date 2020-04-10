@@ -1,3 +1,6 @@
+[![Build Status](https://dev.azure.com/aquality-automation/aquality-automation/_apis/build/status/aquality-automation.aquality-selenium-java-template?branchName=master)](https://dev.azure.com/aquality-automation/aquality-automation/_build/latest?definitionId=9&branchName=master)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=aquality-automation_aquality-selenium-java-template&metric=alert_status)](https://sonarcloud.io/dashboard?id=aquality-automation_aquality-selenium-java-template)
+
 # Aquality Selenium Template Project
 
 Template for [aquality-selenium-java](https://github.com/aquality-automation/aquality-selenium-java) library.
