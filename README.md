@@ -19,7 +19,7 @@ Template for [aquality-selenium-java](https://github.com/aquality-automation/aqu
   - **transformations/**: Cucumber [data transformations](https://cucumber.io/docs/cucumber/configuration/)
 
 ### Configuration
-[settings.json](https://github.com/aquality-automation/aquality-selenium-java-template/blob/master/aquality-selenium-template/src/main/resources/settings.json) file contains settings of Aquality Selenium library. Additional information you can find [here](https://github.com/aquality-automation/aquality-selenium-java/blob/master/Documentation.en.md).
+[settings.json](https://github.com/aquality-automation/aquality-selenium-java-template/blob/master/aquality-selenium-template/src/main/resources/settings.json) file contains settings of Aquality Selenium library. Additional information you can find [here](https://github.com/aquality-automation/aquality-selenium-java/wiki/Overview-(English)).
 
 [allure.properties](https://github.com/aquality-automation/aquality-selenium-java-template/blob/master/aquality-selenium-template/src/main/resources/allure.properties) is a part of Allure Report configuration. See details [here](https://docs.qameta.io/allure/).   
 
