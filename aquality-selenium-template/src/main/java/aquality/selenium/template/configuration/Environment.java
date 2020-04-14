@@ -6,22 +6,15 @@ import aquality.selenium.core.utilities.JsonSettingsFile;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public enum Environment {
-    PROD("prod"),
-    STAGE("stage");
+class Environment {
 
-    private ISettingsFile configFile;
-
-    Environment(String name) {
-        this.configFile = getConfigFile(name);
+    private Environment() {
     }
 
-    private ISettingsFile getConfigFile(final String envName) {
+    static ISettingsFile getCurrentEnvironment() {
+        String envVarValue = System.getProperty("environment");
+        String envName = envVarValue == null ? "stage" : envVarValue;
         Path resourcePath = Paths.get("environment", envName, "config.json");
         return new JsonSettingsFile(resourcePath.toString());
-    }
-
-    public String getStartUrl() {
-        return this.configFile.getValue("/startUrl").toString();
     }
 }

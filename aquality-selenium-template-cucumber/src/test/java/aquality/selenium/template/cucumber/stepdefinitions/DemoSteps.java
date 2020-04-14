@@ -1,4 +1,4 @@
-package aquality.selenium.template.glue.stepdefinitions;
+package aquality.selenium.template.cucumber.stepdefinitions;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.template.configuration.Configuration;
@@ -21,7 +21,7 @@ public class DemoSteps {
 
     @Given("Main page is opened")
     public void mainPageIsOpened() {
-        AqualityServices.getBrowser().goTo(Configuration.getCurrentEnvironment().getStartUrl());
+        AqualityServices.getBrowser().goTo(Configuration.getStartUrl());
     }
 
     @When("I open Contact us page")
