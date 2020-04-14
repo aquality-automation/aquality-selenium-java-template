@@ -11,7 +11,7 @@ Template for [aquality-selenium-java](https://github.com/aquality-automation/aqu
   - **models/**: classes that represent data models of the application under the test (POJO classes) 
   - **utilities/**: util classes
   - **src/main/resources/**: resource files such as configurations and test data
-- *aquality-selenium-template-cucumber* - Cucumber implementation of the tests
+- **aquality-selenium-template-cucumber** - Cucumber implementation of the tests
   - **features/**: Cucumber feature files with test scenarios
   - **hooks/**: Cucumber [hooks](https://cucumber.io/docs/cucumber/api/#hooks)
   - **runners/**: Cucumber test runners
