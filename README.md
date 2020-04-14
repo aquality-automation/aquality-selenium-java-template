@@ -12,7 +12,7 @@ Template for [aquality-selenium-java](https://github.com/aquality-automation/aqu
   - **utilities/**: util classes
   - **src/main/resources/**: resource files such as configurations and test data
 - **aquality-selenium-template-cucumber** - Cucumber implementation of the tests
-  - **features/**: Cucumber feature files with test scenarios
+  - **features/**: Gherkin feature files with test scenarios
   - **hooks/**: Cucumber [hooks](https://cucumber.io/docs/cucumber/api/#hooks)
   - **runners/**: Cucumber test runners
   - **stepdefinitions/**: step definition classes
