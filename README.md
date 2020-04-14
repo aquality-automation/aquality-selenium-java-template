@@ -30,7 +30,7 @@ or with Maven command ```mvn clean test``` where you can specify all necessary a
 ### Reporting 
 Allure Framework is used as a reporting tool. Report data will be places in ```target/allure-results/``` folder (you can change it in ```allure.properties``` file).
 
-Run maven command ```mvn allure:serve``` to build and open report in web browser.
+Run maven command ```mvn allure:serve``` to build and open report in web browser. To generate report in CI use corresponding plugin for your system.
 
 ### License
 Library's source code is made available under the [Apache 2.0 license](https://github.com/aquality-automation/aquality-selenium-java-template/blob/master/LICENSE).
