@@ -1,6 +1,6 @@
-package aquality.selenium.template.glue.transformations;
+package aquality.selenium.template.cucumber.transformations;
 
-import aquality.selenium.template.glue.transformations.datatables.ContactUsTransformer;
+import aquality.selenium.template.cucumber.transformations.datatables.ContactUsTransformer;
 import aquality.selenium.template.models.ContactUsInfo;
 import io.cucumber.core.api.TypeRegistry;
 import io.cucumber.core.api.TypeRegistryConfigurer;

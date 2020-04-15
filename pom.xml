@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.aquality-automation</groupId>
-    <artifactId>aquality-selenium-template</artifactId>
+    <artifactId>aquality-selenium-template-project</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <licenses>
@@ -16,9 +17,13 @@
         </license>
     </licenses>
 
+    <modules>
+        <module>aquality-selenium-template</module>
+        <module>aquality-selenium-template-cucumber</module>
+    </modules>
+
     <properties>
         <aquality.selenium.version>LATEST</aquality.selenium.version>
-        <cucumber.version>4.8.1</cucumber.version>
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
@@ -27,18 +32,6 @@
             <groupId>com.github.aquality-automation</groupId>
             <artifactId>aquality-selenium</artifactId>
             <version>${aquality.selenium.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
         </dependency>
 
         <dependency>
@@ -58,12 +51,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber4-jvm</artifactId>
-            <version>2.13.2</version>
         </dependency>
     </dependencies>
 

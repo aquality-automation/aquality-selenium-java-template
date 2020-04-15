@@ -1,4 +1,4 @@
-package aquality.selenium.template.glue.transformations.datatables;
+package aquality.selenium.template.cucumber.transformations.datatables;
 
 import aquality.selenium.template.models.ContactUsInfo;
 import io.cucumber.datatable.DataTable;

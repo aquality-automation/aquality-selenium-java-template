@@ -1,8 +1,6 @@
-package aquality.selenium.template.glue.hooks;
+package aquality.selenium.template.utilities;
 
 import aquality.selenium.browser.AqualityServices;
-import io.cucumber.core.api.Scenario;
-import io.cucumber.java.After;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -12,16 +10,9 @@ import javax.imageio.ImageIO;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class ScreenshotHooks {
+public class ScreenshotProvider {
 
-    @After(order = 1)
-    public void takeScreenshot(Scenario scenario) {
-        if (scenario.isFailed()) {
-            scenario.embed(attachScreenshot(), "image/png");
-        }
-    }
-
-    private byte[] attachScreenshot() {
+    public byte[] takeScreenshot() {
         int scrollTimeout = 500;
         ShootingStrategy shootingStrategy = ShootingStrategies.viewportPasting(scrollTimeout);
         Screenshot fpScreenshot = new AShot()
