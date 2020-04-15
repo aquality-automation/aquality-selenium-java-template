@@ -1,5 +1,6 @@
 package aquality.selenium.template.configuration;
 
+import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
 
@@ -12,8 +13,7 @@ class Environment {
     }
 
     static ISettingsFile getCurrentEnvironment() {
-        String envVarValue = System.getProperty("environment");
-        String envName = envVarValue == null ? "stage" : envVarValue;
+        String envName = (String) AqualityServices.get(ISettingsFile.class).getValue("/environment");
         Path resourcePath = Paths.get("environment", envName, "config.json");
         return new JsonSettingsFile(resourcePath.toString());
     }
