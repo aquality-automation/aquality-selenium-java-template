@@ -15,8 +15,6 @@ steps:
       script: |
         curl https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.3/allure-commandline-2.13.3.zip -o /opt/allure-commandline.zip
         unzip /opt/allure-commandline.zip -d /opt/allure-commandline
-        ls /opt/allure-commandline
-        export PATH="$PATH:/opt/allure-commandline/allure-2.13.3/bin"
 
   - task: SonarCloudPrepare@1
     displayName: 'Prepare SonarCloud analysis'
@@ -60,12 +58,13 @@ steps:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean test'
+      goals: 'test'
 
   - task: Bash@3
     displayName: 'Generate Allure report'
     inputs:
       targetType: 'inline'
       script: |
+        export PATH="$PATH:/opt/allure-commandline/allure-2.13.3/bin"
         allure --version
         allure generate aquality-selenium-template-cucumber/target/allure-results -o aquality-selenium-template-cucumber/target/allure-report
