@@ -73,15 +73,15 @@ steps:
   - task: CopyFiles@2
     displayName: 'Copy Allure report'
     inputs:
-      SourceFolder: '$(Build.SourcesDirectory)'
+      SourceFolder: '$(Build.SourcesDirectory)/aquality-selenium-template-cucumber/target/allure-report'
       Contents: |
-        aquality-selenium-template-cucumber/target/allure-report
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        **
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/report'
     condition: succeededOrFailed()
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish copied artifacts'
     inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)/aquality-selenium-template-cucumber/target/allure-report'
+      targetPath: '$(Build.ArtifactStagingDirectory)/report'
       artifactName: 'allure'
     condition: succeededOrFailed()
