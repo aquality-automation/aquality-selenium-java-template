@@ -21,8 +21,8 @@ public class DemoSteps {
 
     @Given("Main page is opened")
     public void mainPageIsOpened() {
-        Assert.fail("Test fail");
         AqualityServices.getBrowser().goTo(Configuration.getStartUrl());
+        Assert.fail("Test fail");
     }
 
     @When("I open Contact us page")
