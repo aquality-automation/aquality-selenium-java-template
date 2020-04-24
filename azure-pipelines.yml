@@ -68,3 +68,20 @@ steps:
         export PATH="$PATH:/opt/allure-commandline/allure-2.13.3/bin"
         allure --version
         allure generate aquality-selenium-template-cucumber/target/allure-results -o aquality-selenium-template-cucumber/target/allure-report
+    condition: succeededOrFailed()
+
+  - task: CopyFiles@2
+    displayName: 'Copy Allure report'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: |
+        aquality-selenium-template-cucumber/target/allure-report
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish copied artifacts'
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)/aquality-selenium-template-cucumber/target/allure-report'
+      artifactName: 'allure'
+    condition: succeededOrFailed()
