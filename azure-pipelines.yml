@@ -2,7 +2,10 @@ trigger:
   - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
+
+variables:
+  webDriverVersion: '80.0.3987.106'
 
 steps:
   - task: SonarCloudPrepare@1
