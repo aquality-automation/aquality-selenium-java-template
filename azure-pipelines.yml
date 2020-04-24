@@ -13,50 +13,50 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        sudo apt-add-repository ppa:yandex-qatools/allure-framework
-        sudo apt-get update
-        sudo apt-get install allure-commandline
+        curl https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.3/allure-commandline-2.13.3.zip -o /opt/allure-commandline.zip
+        unzip /opt/allure-commandline.zip -d /opt/allure-commandline
+        ls /opt/allure-commandline
 
-  - task: SonarCloudPrepare@1
-    displayName: 'Prepare SonarCloud analysis'
-    inputs:
-      SonarCloud: 'SonarCloud'
-      organization: 'aqualityautomation'
-      scannerMode: 'CLI'
-      configMode: 'file'
-      extraProperties: |
-        sonar.coverage.exclusions=**/**
+  #- task: SonarCloudPrepare@1
+  #  displayName: 'Prepare SonarCloud analysis'
+  #  inputs:
+  #    SonarCloud: 'SonarCloud'
+  #    organization: 'aqualityautomation'
+  #    scannerMode: 'CLI'
+  #    configMode: 'file'
+  #    extraProperties: |
+  #      sonar.coverage.exclusions=**/**
 
-  - task: Maven@3
-    displayName: 'Build project'
-    inputs:
-      mavenPomFile: 'pom.xml'
-      mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean'
+  #- task: Maven@3
+  #  displayName: 'Build project'
+  #  inputs:
+  #    mavenPomFile: 'pom.xml'
+  #    mavenOptions: '-Xmx3072m'
+  #    javaHomeOption: 'JDKVersion'
+  #    jdkVersionOption: '1.8'
+  #    jdkArchitectureOption: 'x64'
+  #    publishJUnitResults: true
+  #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+  #    goals: 'clean'
 
-  - task: SonarCloudAnalyze@1
-    displayName: 'Run SonarCloud code analysis'
-    continueOnError: true
+  #- task: SonarCloudAnalyze@1
+  #  displayName: 'Run SonarCloud code analysis'
+  #  continueOnError: true
 
-  - task: SonarCloudPublish@1
-    displayName: 'Publish SonarCloud quality gate results'
-    continueOnError: true
-    inputs:
-      pollingTimeoutSec: '300'
+  #- task: SonarCloudPublish@1
+  #  displayName: 'Publish SonarCloud quality gate results'
+  #  continueOnError: true
+  #  inputs:
+  #    pollingTimeoutSec: '300'
 
-  - task: Maven@3
-    displayName: 'Run tests'
-    inputs:
-      mavenPomFile: 'pom.xml'
-      mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean test'
+  #- task: Maven@3
+  #  displayName: 'Run tests'
+  #  inputs:
+  #    mavenPomFile: 'pom.xml'
+  #    mavenOptions: '-Xmx3072m'
+  #    javaHomeOption: 'JDKVersion'
+  #    jdkVersionOption: '1.8'
+  #    jdkArchitectureOption: 'x64'
+  #    publishJUnitResults: true
+  #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+  #    goals: 'clean test'
