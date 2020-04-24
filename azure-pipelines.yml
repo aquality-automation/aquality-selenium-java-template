@@ -8,6 +8,15 @@ variables:
   webDriverVersion: '80.0.3987.106'
 
 steps:
+  - task: Bash@3
+    displayName: 'Install Allure CommandLine'
+    inputs:
+      targetType: 'inline'
+      script: |
+        sudo apt-add-repository ppa:yandex-qatools/allure-framework
+        sudo apt-get update
+        sudo apt-get install allure-commandline
+
   - task: SonarCloudPrepare@1
     displayName: 'Prepare SonarCloud analysis'
     inputs:
