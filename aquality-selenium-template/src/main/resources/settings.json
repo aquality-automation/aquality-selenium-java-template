@@ -20,10 +20,15 @@
         "download.default_directory": "//home//selenium//downloads"
       },
       "startArguments": [
-        "window-size=1920,1080",
         "--no-sandbox",
+        "--headless",
+        "test-type",
         "--disable-popup-blocking",
-        "--disable-gpu"
+        "--disable-default-apps",
+        "--disable-browser-side-navigation",
+        "--disable-gpu",
+        "disable-infobars",
+        "window-size=1920,1080"
       ]
     },
     "firefox": {
