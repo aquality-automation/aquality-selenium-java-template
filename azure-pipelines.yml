@@ -16,6 +16,8 @@ steps:
         curl https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.3/allure-commandline-2.13.3.zip -o /opt/allure-commandline.zip
         unzip /opt/allure-commandline.zip -d /opt/allure-commandline
         ls /opt/allure-commandline
+        export PATH="$PATH:/opt/allure-commandline/allure-2.13.3/bin"
+        allure -version
 
   #- task: SonarCloudPrepare@1
   #  displayName: 'Prepare SonarCloud analysis'
