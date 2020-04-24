@@ -17,7 +17,6 @@ steps:
         unzip /opt/allure-commandline.zip -d /opt/allure-commandline
         ls /opt/allure-commandline
         export PATH="$PATH:/opt/allure-commandline/allure-2.13.3/bin"
-        allure --version
 
   - task: SonarCloudPrepare@1
     displayName: 'Prepare SonarCloud analysis'
@@ -68,5 +67,5 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        ls
-        allure generate target/allure-results -o target/allure-report
+        allure --version
+        allure generate aquality-selenium-template-cucumber/target/allure-results -o aquality-selenium-template-cucumber/target/allure-report
