@@ -28,7 +28,7 @@ Scenarios from feature files can be executed with TestNG plugin for IDE (Intelli
 or with Maven command ```mvn clean test``` where you can specify all necessary arguments.
 
 ### Reporting 
-Allure Framework is used as a reporting tool. Report data will be places in ```target/allure-results/``` folder (you can change it in ```allure.properties``` file).
+Allure Framework is used as a reporting tool. Report data will be placed in ```target/allure-results/``` folder (you can change it in ```allure.properties``` file).
 
 Run maven command ```mvn allure:serve``` to build and open report in web browser. To generate report in CI use corresponding plugin for your system.
 
