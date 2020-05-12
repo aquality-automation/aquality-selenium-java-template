@@ -6,8 +6,6 @@ import io.cucumber.java.Transpose;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import java.util.List;
-
 import static org.testng.Assert.assertTrue;
 
 public class ContactUsPageSteps {
@@ -24,8 +22,7 @@ public class ContactUsPageSteps {
     }
 
     @When("I fill contact form using following data:")
-    public void fillContactUsPage(@Transpose List<ContactUsInfo> data) {
-        ContactUsInfo contactUsInfo = data.get(0);
+    public void fillContactUsPage(@Transpose ContactUsInfo contactUsInfo) {
         contactUsPage.setName(contactUsInfo.getName())
                 .setCompany(contactUsInfo.getCompany())
                 .setPhone(contactUsInfo.getPhone())
