@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class ScreenshotProvider {
+public class ScreenshotProvider implements IScreenshotProvider {
 
     public byte[] takeScreenshot() {
         int scrollTimeout = 500;
@@ -18,12 +18,14 @@ public class ScreenshotProvider {
         Screenshot fpScreenshot = new AShot()
                 .shootingStrategy(shootingStrategy)
                 .takeScreenshot(AqualityServices.getBrowser().getDriver());
+
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             ImageIO.write(fpScreenshot.getImage(), "jpg", baos);
             baos.flush();
             return baos.toByteArray();
         } catch (IOException ioe) {
-            AqualityServices.getLogger().debug("IO Exception during preparing screenshot of full page%nException message", ioe);
+            AqualityServices.getLogger()
+                    .debug("IO Exception during preparing screenshot of full page%nException message", ioe);
             return new byte[] {};
         }
     }
