@@ -4,16 +4,17 @@ import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.BrowserModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Stage;
 import io.cucumber.core.backend.ObjectFactory;
 import io.cucumber.guice.CucumberModules;
 import io.cucumber.guice.ScenarioScope;
 
 public class CustomObjectFactory implements ObjectFactory {
 
-    private Injector injector;
+    private final Injector injector;
 
     public CustomObjectFactory() {
-        this.injector = Guice.createInjector(CucumberModules.createScenarioModule(),
+        this.injector = Guice.createInjector(Stage.PRODUCTION, CucumberModules.createScenarioModule(),
                 new ServiceModule(), new BrowserModule(AqualityServices::getBrowser));
     }
 
