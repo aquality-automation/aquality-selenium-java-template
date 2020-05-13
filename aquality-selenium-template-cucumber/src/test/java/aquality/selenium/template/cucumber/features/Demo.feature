@@ -15,7 +15,7 @@ Feature: Demo
     Then Notification about empty fields is present
 
   @demo
-  Scenario: Calculator
+  Scenario: ScenarioContext demo
     Given I store '2' as 'value1'
     And I store '3' as 'value2'
     Then I add 'value1' to 'value2' and '5' as a result
