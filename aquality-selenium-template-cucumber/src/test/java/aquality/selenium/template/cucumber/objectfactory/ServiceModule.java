@@ -4,10 +4,10 @@ import aquality.selenium.template.utilities.IScreenshotProvider;
 import aquality.selenium.template.utilities.ScreenshotProvider;
 import com.google.inject.AbstractModule;
 
-public class ServiceModule extends AbstractModule {
+final class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(IScreenshotProvider.class).toInstance(new ScreenshotProvider());
+        this.bind(IScreenshotProvider.class).toInstance(new ScreenshotProvider());
     }
 }

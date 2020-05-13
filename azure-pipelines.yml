@@ -4,7 +4,11 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-steps:
+jobs:
+- job: sonar
+  displayName: Analyse code with SonarQube
+
+  steps:
   - task: SonarCloudPrepare@1
     displayName: 'Prepare SonarCloud analysis'
     inputs:
@@ -33,10 +37,13 @@ steps:
 
   - task: SonarCloudPublish@1
     displayName: 'Publish SonarCloud quality gate results'
-    continueOnError: true
     inputs:
       pollingTimeoutSec: '300'
 
+- job: tests
+  displayName: Run tests
+
+  steps:
   - task: Maven@3
     displayName: 'Run tests'
     inputs:
@@ -47,4 +54,4 @@ steps:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean test'
+      goals: 'test'

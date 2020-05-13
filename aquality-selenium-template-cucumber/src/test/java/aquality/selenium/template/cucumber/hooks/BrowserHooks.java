@@ -7,6 +7,8 @@ public class BrowserHooks {
 
     @After(order = 0)
     public void closeBrowser() {
-        AqualityServices.getBrowser().quit();
+        if (AqualityServices.isBrowserStarted()) {
+            AqualityServices.getBrowser().quit();
+        }
     }
 }
