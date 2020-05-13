@@ -6,15 +6,12 @@ import io.cucumber.java.Transpose;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import javax.inject.Inject;
-
 import static org.testng.Assert.assertTrue;
 
 public class ContactUsPageSteps {
 
     private final ContactUsPage contactUsPage;
 
-    @Inject
     public ContactUsPageSteps() {
         contactUsPage = new ContactUsPage();
     }

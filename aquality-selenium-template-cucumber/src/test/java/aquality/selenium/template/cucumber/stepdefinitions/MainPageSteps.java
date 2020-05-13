@@ -7,8 +7,6 @@ import aquality.selenium.template.forms.pages.MainPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-import javax.inject.Inject;
-
 import static aquality.selenium.template.forms.TopBarMenu.Item.CONTACT_US;
 
 public class MainPageSteps {
@@ -16,7 +14,6 @@ public class MainPageSteps {
     private final MainPage mainPage;
     private final TopBarMenu topBarMenu;
 
-    @Inject
     public MainPageSteps() {
         mainPage = new MainPage();
         topBarMenu = new TopBarMenu();

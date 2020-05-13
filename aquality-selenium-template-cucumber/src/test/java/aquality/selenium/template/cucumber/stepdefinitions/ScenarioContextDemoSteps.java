@@ -1,8 +1,8 @@
 package aquality.selenium.template.cucumber.stepdefinitions;
 
 import aquality.selenium.template.cucumber.utilities.ScenarioContext;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 import javax.inject.Inject;
 
@@ -17,15 +17,21 @@ public class ScenarioContextDemoSteps {
         this.scenarioContext = scenarioContext;
     }
 
-    @Given("I store '{int}' as '{}'")
+    @When("I store '{int}' as '{}'")
     public void storeValue(int value, String key) {
         scenarioContext.add(key, value);
     }
 
-    @Then("I add '{}' to '{}' and '{int}' as a result")
-    public void addNumbersAndGetResult(String key1, String key2, int result) {
+    @When("I add '{}' to '{}' and store it as '{}'")
+    public void addAndStore(String key1, String key2, String resultKey) {
         int value1 = scenarioContext.get(key1);
         int value2 = scenarioContext.get(key2);
-        assertEquals(value1 + value2, result, "The result is incorrect");
+        scenarioContext.add(resultKey, value1 + value2);
+    }
+
+    @Then("'{}' should be equal to '{int}'")
+    public void theResultShouldBeEqualTo(String resultKey, int expectedResult) {
+        int actualResult = scenarioContext.get(resultKey);
+        assertEquals(actualResult, expectedResult, "The result is incorrect");
     }
 }

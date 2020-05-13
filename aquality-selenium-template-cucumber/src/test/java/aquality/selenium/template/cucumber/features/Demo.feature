@@ -16,6 +16,7 @@ Feature: Demo
 
   @demo
   Scenario: ScenarioContext demo
-    Given I store '2' as 'value1'
+    When I store '2' as 'value1'
     And I store '3' as 'value2'
-    Then I add 'value1' to 'value2' and '5' as a result
+    And I add 'value1' to 'value2' and store it as 'value3'
+    Then 'value3' should be equal to '5'
