@@ -23,7 +23,6 @@
     </modules>
 
     <properties>
-        <aquality.selenium.version>LATEST</aquality.selenium.version>
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
@@ -31,7 +30,7 @@
         <dependency>
             <groupId>com.github.aquality-automation</groupId>
             <artifactId>aquality-selenium</artifactId>
-            <version>${aquality.selenium.version}</version>
+            <version>2.2.0</version>
         </dependency>
 
         <dependency>
