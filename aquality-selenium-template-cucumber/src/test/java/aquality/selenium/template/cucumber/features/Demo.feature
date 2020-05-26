@@ -15,8 +15,13 @@ Feature: Demo
     Then Notification about empty fields is present
 
   @demo
-  Scenario: ScenarioContext demo
-    When I store '2' as 'value1'
-    And I store '3' as 'value2'
+  Scenario Template: ScenarioContext demo
+    When I store '<value1>' as 'value1'
+    And I store '<value2>' as 'value2'
     And I add 'value1' to 'value2' and store it as 'value3'
-    Then 'value3' should be equal to '5'
+    Then 'value3' should be equal to '<result>'
+
+    Scenarios:
+      | value1 | value2 | result |
+      | 2      | 3      | 5      |
+      | 3      | 4      | 7      |

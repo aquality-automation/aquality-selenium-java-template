@@ -12,7 +12,10 @@ import org.testng.annotations.DataProvider;
                 "aquality.selenium.template.cucumber.transformations",
                 "aquality.selenium.template.cucumber.stepdefinitions"
         },
-        plugin = {"io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"},
+        plugin = {
+                "io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm",
+                "aquality.tracking.integrations.cucumber5jvm.AqualityTrackingCucumber5Jvm"
+        },
         strict = true,
         objectFactory = CustomObjectFactory.class
 )
