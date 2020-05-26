@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "host": "{aquality_tracking_address}",
+  "token": "{api_token}",
+  "projectId": 0,
+  "executor": "Azure DevOps",
+  "suiteName": "Demo",
+  "buildName": "1.0.0",
+  "environment": "Stage"
+}
