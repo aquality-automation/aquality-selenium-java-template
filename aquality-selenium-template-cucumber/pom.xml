@@ -25,6 +25,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.aquality-automation</groupId>
+            <artifactId>aquality-tracking-cucumber5-jvm</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
