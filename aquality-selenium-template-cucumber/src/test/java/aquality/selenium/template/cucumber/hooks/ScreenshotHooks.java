@@ -17,8 +17,6 @@ public class ScreenshotHooks {
 
     @After(order = 1)
     public void takeScreenshot(Scenario scenario) {
-        if (scenario.isFailed()) {
-            scenario.attach(screenshotProvider.takeScreenshot(), "image/png", "screenshot");
-        }
+        scenario.attach(screenshotProvider.takeScreenshot(), "image/png", "screenshot.png");
     }
 }

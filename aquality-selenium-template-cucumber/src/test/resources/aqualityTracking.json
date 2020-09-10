@@ -1,10 +1,10 @@
 {
   "enabled": false,
-  "host": "{aquality_tracking_address}",
-  "token": "{api_token}",
-  "projectId": 0,
+  "host": "{protocol_host_and_port}",
+  "token": "{generated_api_token}",
+  "projectId": 1,
   "executor": "Azure DevOps",
-  "suiteName": "Demo",
+  "suiteName": "{project_suite_name_to_import}",
   "buildName": "1.0.0",
   "environment": "Stage",
   "attachmentsDirectory": "target/attachments"
