@@ -10,9 +10,10 @@ import java.util.Map;
 
 public class DataTableTypeTransformations {
 
+    private final ObjectMapper mapper = new ObjectMapper();
+
     @DefaultDataTableEntryTransformer
     public ContactUsInfo getContactUsInfo(Map<String, String> entry, Type toValueType) {
-        ObjectMapper mapper = new ObjectMapper();
         JavaType constructedType = mapper.constructType(toValueType);
         return mapper.convertValue(entry, constructedType);
     }
