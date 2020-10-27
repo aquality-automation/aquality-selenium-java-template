@@ -1,19 +1,19 @@
 package aquality.selenium.template.cucumber.transformations;
 
-import aquality.selenium.template.models.ContactUsInfo;
-import io.cucumber.java.DataTableType;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.java.DefaultDataTableEntryTransformer;
 
+import java.lang.reflect.Type;
 import java.util.Map;
 
 public class DataTableTypeTransformations {
 
-    @DataTableType
-    public ContactUsInfo getContactUsInfo(Map<String, String> entry) {
-        ContactUsInfo contactUsInfoModel = new ContactUsInfo();
-        contactUsInfoModel.setName(entry.get("Name"));
-        contactUsInfoModel.setCompany(entry.get("Company"));
-        contactUsInfoModel.setPhone(entry.get("Phone"));
-        contactUsInfoModel.setComment(entry.get("Comment"));
-        return contactUsInfoModel;
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    @DefaultDataTableEntryTransformer
+    public Object transformDataTable(Map<String, String> entry, Type toValueType) {
+        JavaType constructedType = mapper.constructType(toValueType);
+        return mapper.convertValue(entry, constructedType);
     }
 }
