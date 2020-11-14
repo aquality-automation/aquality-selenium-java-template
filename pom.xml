@@ -24,7 +24,7 @@
 
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
-        <thread.count>4</thread.count>
+        <data.provider.thread.count>4</data.provider.thread.count>
     </properties>
 
     <dependencies>
@@ -81,7 +81,7 @@
                     <properties>
                         <property>
                             <name>dataproviderthreadcount</name>
-                            <value>${thread.count}</value>
+                            <value>${data.provider.thread.count}</value>
                         </property>
                     </properties>
                 </configuration>
