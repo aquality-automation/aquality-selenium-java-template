@@ -6,6 +6,7 @@ import io.cucumber.java.Transpose;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class ContactUsPageSteps {
@@ -43,5 +44,11 @@ public class ContactUsPageSteps {
     public void checkEmptyFieldWarning() {
         assertTrue(contactUsPage.isEmailValidationMessagePresent(),
                 "Email validation message should be displayed");
+    }
+
+    @Then("Notification about empty fields is NOT present")
+    public void checkEmptyFieldNotWarning() {
+        assertFalse(contactUsPage.isEmailValidationMessagePresent(),
+                "Email validation message should NOT be displayed");
     }
 }
