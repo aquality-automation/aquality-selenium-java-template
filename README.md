@@ -27,6 +27,9 @@ Template for [aquality-selenium-java](https://github.com/aquality-automation/aqu
 Scenarios from feature files can be executed with TestNG plugin for IDE (Intellij Idea, Eclipse)
 or with Maven command ```mvn clean test``` where you can specify all necessary arguments.
 
+If executed with Maven, tests will be run in ```4``` threads. To change the amount of threads add ```-Ddata.provider.thread.count``` property to the command.
+E.g. ```mvn clean test -Ddata.provider.thread.count=10```.
+
 ### Reporting 
 Allure Framework is used as a reporting tool. Report data will be placed in ```target/allure-results/``` folder (you can change it in ```allure.properties``` file).
 

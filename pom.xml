@@ -24,6 +24,7 @@
 
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
+        <data.provider.thread.count>4</data.provider.thread.count>
     </properties>
 
     <dependencies>
@@ -77,6 +78,12 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${data.provider.thread.count}</value>
+                        </property>
+                    </properties>
                 </configuration>
 
                 <dependencies>
