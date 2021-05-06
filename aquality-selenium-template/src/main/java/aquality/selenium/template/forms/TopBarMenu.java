@@ -15,11 +15,17 @@ public class TopBarMenu extends Form {
         getElementFactory().getButton(menuItem.getMenuItemLocator(), menuItem.toString()).clickAndWait();
     }
 
-    @Getter
-    @AllArgsConstructor
     public enum Item {
         CONTACT_US(By.xpath("//div[@id='primary-navigation']//li[contains(@class, 'contact-us menu')]//a"));
 
+        Item(By menuItemLocator) {
+            this.menuItemLocator = menuItemLocator;
+        }
+
         private final By menuItemLocator;
+
+        public By getMenuItemLocator() {
+            return menuItemLocator;
+        }
     }
 }
