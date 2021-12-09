@@ -1,5 +1,6 @@
 package aquality.selenium.template.forms.pages;
 
+import aquality.selenium.core.elements.ElementState;
 import aquality.selenium.elements.interfaces.IButton;
 import aquality.selenium.elements.interfaces.ICheckBox;
 import aquality.selenium.elements.interfaces.ILabel;
@@ -9,16 +10,17 @@ import org.openqa.selenium.By;
 
 public class ContactUsPage extends BaseAppForm {
 
-    private final ITextBox txbName = getElementFactory().getTextBox(By.id("name"), "Name");
-    private final ITextBox txbCompany = getElementFactory().getTextBox(By.id("company"), "Company");
-    private final ITextBox txbPhone = getElementFactory().getTextBox(By.id("phone"), "Phone");
-    private final ITextBox txbComment = getElementFactory().getTextBox(By.id("message"), "Comment");
-    private final ICheckBox cmbPrivacy = getElementFactory().getCheckBox(By.name("privacy"), "Privacy");
-    private final IButton btnSend = getElementFactory().getButton(By.xpath("//input[@value='Send']"), "Send");
-    private final ILabel lblEmailAlert = getElementFactory().getLabel(By.xpath("//span[@role='alert']//preceding-sibling::input[@id='email']"), "Email validating message");
+    private final ITextBox txbName = getElementFactory().getTextBox(By.id("your-name"), "Name");
+    private final ITextBox txbCompany = getElementFactory().getTextBox(By.id("your-company"), "Company");
+    private final ITextBox txbPhone = getElementFactory().getTextBox(By.id("your-phone"), "Phone");
+    private final ITextBox txbEmail = getElementFactory().getTextBox(By.id("your-email"), "Email");
+    private final ITextBox txbComment = getElementFactory().getTextBox(By.id("your-message"), "Comment");
+    private final ICheckBox cmbPrivacy = getElementFactory().getCheckBox(By.name("privacy"), "Privacy", ElementState.EXISTS_IN_ANY_STATE);
+    private final IButton btnSend = getElementFactory().getButton(By.xpath("//*[contains(@class,'contactsForm__submit')]//button"), "Send");
+    private final ILabel lblEmailAlert = getElementFactory().getLabel(By.id("modal-contacts-thanks"), "Email validating message");
 
     public ContactUsPage(){
-        super(By.id("contact-us"), "Contact Us");
+        super(By.xpath("//section[contains(@class,'contactsForm')]"), "Contact Us");
     }
 
     public ContactUsPage setName(final String name) {
@@ -36,13 +38,18 @@ public class ContactUsPage extends BaseAppForm {
         return this;
     }
 
+    public ContactUsPage setEmail(final String email) {
+        txbEmail.clearAndType(email);
+        return this;
+    }
+
     public ContactUsPage setComment(final String comment) {
         txbComment.clearAndType(comment);
         return this;
     }
 
     public ContactUsPage checkPrivacyAndCookies() {
-        cmbPrivacy.check();
+        cmbPrivacy.getJsActions().check();
         return this;
     }
 

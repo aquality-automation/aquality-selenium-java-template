@@ -6,6 +6,6 @@ import org.openqa.selenium.By;
 public class MainPage extends BaseAppForm {
 
     public MainPage() {
-        super(By.xpath("//section[@class='testing-services-block']"), "Main page");
+        super(By.xpath("//section[@class='services']"), "Main page");
     }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 public class TopBarMenu extends Form {
 
     public TopBarMenu() {
-        super(By.id("masthead"), "Header");
+        super(By.className("header"), "Header");
     }
 
     public void openHeaderMenu(Item menuItem) {
@@ -18,7 +18,7 @@ public class TopBarMenu extends Form {
     @Getter
     @AllArgsConstructor
     public enum Item {
-        CONTACT_US(By.xpath("//div[@id='primary-navigation']//li[contains(@class, 'contact-us menu')]//a"));
+        CONTACT_US(By.xpath("//*[contains(@class,'header__contact')]//a"));
 
         private final By menuItemLocator;
     }

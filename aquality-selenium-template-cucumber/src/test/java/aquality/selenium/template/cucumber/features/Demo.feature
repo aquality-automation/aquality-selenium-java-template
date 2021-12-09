@@ -8,6 +8,7 @@ Feature: Demo
     When I fill contact form using following data:
       | Name     | Peter Parker             |
       | Company  | Aquality Automation      |
+      | Email    | aquality-auto@a1qa.com   |
       | Phone    | +44 208 816 7320         |
       | Comment  | I'd like to contact you! |
     And I accept Privacy and Cookies Policy
