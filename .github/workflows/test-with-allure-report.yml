@@ -60,4 +60,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
-          target_url: https://mialeska.github.io/aquality-selenium-java-template/${{github.run_number}}
+          target_url: https://mialeska.github.io/aquality-selenium-java-template/${{github.run_number}}/
