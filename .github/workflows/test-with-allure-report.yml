@@ -1,13 +1,34 @@
 name: Run tests with allure report
 on:
   pull_request:
+    branches:
+      - master
+    paths:
+      - 'aquality-selenium-template/**'
+      - 'aquality-selenium-template-cucumber/**'
+      - 'scripts/**'
   push:
     branches:
       - master
 
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Website environment'
+        required: true
+        default: 'stage'
+        options:
+          - prod
+          - stage
 jobs:
-  build:
-    name: Generate Allure Report
+  build-and-test:
+    env:
+      SUBPROJECT_NAME: aquality-selenium-template-cucumber
+      ENVIRONMENT: ${{ github.event.inputs.environment == '' && 'stage' ||  github.event.inputs.environment }}
+      GH_PAGES_URL: https://aquality-automation.github.io/aquality-selenium-java-template
+    concurrency: test-${{ github.event.inputs.environment == '' && 'stage' || github.event.inputs.environment }}
+    name: Run tests and generate Allure Report
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,11 +39,14 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
           cache: maven
-      - name: Install Google Chrome # Using shell script to install Google Chrome
+
+      - name: Install Google Chrome
         run: |
           chmod +x ./scripts/InstallChrome.sh
            ./scripts/InstallChrome.sh
+
       - name: Test with Maven
+        id: maven_tests
         run: mvn test
 
       - name: Get Allure history
@@ -38,7 +62,7 @@ jobs:
         if: always()
         id: allure-report
         with:
-          allure_results: aquality-selenium-template-cucumber/target/allure-results
+          allure_results: ${{ env.SUBPROJECT_NAME }}/target/allure-results
           gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
@@ -58,6 +82,6 @@ jobs:
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test report'
-          state: 'success'
+          state: ${{ steps.maven_tests.outcome }}
           sha: ${{github.event.pull_request.head.sha || github.sha}}
-          target_url: https://mialeska.github.io/aquality-selenium-java-template/${{github.run_number}}/
+          target_url: ${{ env.GH_PAGES_URL }}/${{github.run_number}}/
