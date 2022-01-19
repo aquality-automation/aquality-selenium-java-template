@@ -1,0 +1,31 @@
+[ {
+  "uid" : "1502e438d1b15a6e",
+  "name" : "Empty email validation is working on Contact Us page",
+  "time" : {
+    "start" : 1642588067026,
+    "stop" : 1642588079927,
+    "duration" : 12901
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d26ad60e806c653a",
+  "name" : "ScenarioContext demo",
+  "time" : {
+    "start" : 1642588067029,
+    "stop" : 1642588072951,
+    "duration" : 5922
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c129487a378a848d",
+  "name" : "ScenarioContext demo",
+  "time" : {
+    "start" : 1642588067030,
+    "stop" : 1642588073109,
+    "duration" : 6079
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
