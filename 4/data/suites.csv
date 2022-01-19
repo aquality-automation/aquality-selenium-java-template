@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jan 19 13:08:58 GMT 2022","Wed Jan 19 13:09:04 GMT 2022","6240","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
+"passed","Wed Jan 19 13:08:58 GMT 2022","Wed Jan 19 13:09:04 GMT 2022","6661","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
+"passed","Wed Jan 19 13:08:58 GMT 2022","Wed Jan 19 13:09:11 GMT 2022","13283","","Demo","","Empty email validation is working on Contact Us page","","Empty email validation is working on Contact Us page",""
