@@ -1,0 +1,62 @@
+{
+  "ca1735ae0a1df3a2a41cd573c48e40ca" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9621cdf5f92875ce",
+      "reportUrl" : "https://aquality-automation.github.io/aquality-selenium-java-template/1//#testresult/9621cdf5f92875ce",
+      "status" : "passed",
+      "time" : {
+        "start" : 1642584725185,
+        "stop" : 1642584728736,
+        "duration" : 3551
+      }
+    } ]
+  },
+  "faafc1bb2ffd47dfca928b8a3f4aa363" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7041380af02307e8",
+      "reportUrl" : "https://aquality-automation.github.io/aquality-selenium-java-template/1//#testresult/7041380af02307e8",
+      "status" : "passed",
+      "time" : {
+        "start" : 1642584725182,
+        "stop" : 1642584728800,
+        "duration" : 3618
+      }
+    } ]
+  },
+  "ead2b6b5f5b47efc7259752865d16b5" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e9613b8c9a721c03",
+      "reportUrl" : "https://aquality-automation.github.io/aquality-selenium-java-template/1//#testresult/e9613b8c9a721c03",
+      "status" : "passed",
+      "time" : {
+        "start" : 1642584725193,
+        "stop" : 1642584736662,
+        "duration" : 11469
+      }
+    } ]
+  }
+}

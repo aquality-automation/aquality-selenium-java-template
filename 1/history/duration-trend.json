@@ -1,0 +1,8 @@
+[ {
+  "buildOrder" : 1,
+  "reportUrl" : "https://aquality-automation.github.io/aquality-selenium-java-template/1/",
+  "reportName" : "Allure Report with history",
+  "data" : {
+    "duration" : 11480
+  }
+} ]
