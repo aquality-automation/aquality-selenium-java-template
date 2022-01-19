@@ -18,7 +18,7 @@ public class ContactUsPageSteps {
 
     @Then("Contact us page is opened")
     public void checkContactUsPageIsOpened() {
-        assertTrue(contactUsPage.isDisplayed(), "Contact us page is opened");
+        assertTrue(contactUsPage.state().isDisplayed(), "Contact us page is opened");
     }
 
     @When("I fill contact form using following data:")
@@ -26,6 +26,7 @@ public class ContactUsPageSteps {
         contactUsPage.setName(contactUsInfo.getName())
                 .setCompany(contactUsInfo.getCompany())
                 .setPhone(contactUsInfo.getPhone())
+                .setEmail(contactUsInfo.getEmail())
                 .setComment(contactUsInfo.getComment());
     }
 

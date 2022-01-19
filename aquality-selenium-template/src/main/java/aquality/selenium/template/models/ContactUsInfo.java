@@ -7,5 +7,6 @@ public class ContactUsInfo {
     private String name;
     private String company;
     private String phone;
+    private String email;
     private String comment;
 }
