@@ -1,7 +1,6 @@
 package aquality.selenium.template.cucumber.objectfactory;
 
 import aquality.selenium.browser.AqualityServices;
-import aquality.selenium.browser.BrowserModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
@@ -15,7 +14,7 @@ public class CustomObjectFactory implements ObjectFactory {
 
     public CustomObjectFactory() {
         this.injector = Guice.createInjector(Stage.PRODUCTION, CucumberModules.createScenarioModule(),
-                new ServiceModule(), new BrowserModule(AqualityServices::getBrowser));
+                new ServiceModule(), new CustomBrowserModule(AqualityServices::getBrowser));
     }
 
     @Override
