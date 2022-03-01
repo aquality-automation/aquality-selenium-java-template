@@ -1,0 +1,48 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "src.test.java.aquality.selenium.template.cucumber.features.Demo_feature.Demo",
+    "children" : [ {
+      "name" : "ScenarioContext demo",
+      "uid" : "589580e593145b41",
+      "parentUid" : "dc9f389762ec74c56c3280a32b06441d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1646144199949,
+        "stop" : 1646144209325,
+        "duration" : 9376
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "7", "3", "4" ]
+    }, {
+      "name" : "ScenarioContext demo",
+      "uid" : "32888dba39a6251e",
+      "parentUid" : "dc9f389762ec74c56c3280a32b06441d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1646144199950,
+        "stop" : 1646144209259,
+        "duration" : 9309
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "5", "2", "3" ]
+    }, {
+      "name" : "Empty email validation is working on Contact Us page",
+      "uid" : "c5823f374fbffdbb",
+      "parentUid" : "dc9f389762ec74c56c3280a32b06441d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1646144199955,
+        "stop" : 1646144216841,
+        "duration" : 16886
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "src.test.java.aquality.selenium.template.cucumber.features.Demo_feature.Demo"
+  } ],
+  "name" : "packages"
+}
