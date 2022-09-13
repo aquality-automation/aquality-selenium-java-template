@@ -26,4 +26,8 @@ public class ScenarioContext  {
     public <T> T get(String key) {
         return (T) context.get(key);
     }
+
+    public boolean hasSaved(String key) {
+        return context.containsKey(key);
+    }
 }
