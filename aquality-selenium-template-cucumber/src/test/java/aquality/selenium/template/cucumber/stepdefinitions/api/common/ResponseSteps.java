@@ -72,7 +72,7 @@ public class ResponseSteps {
         response.then().body(matchesJsonSchemaInClasspath(pathToSchema));
     }
 
-    @When("I extract the {string} from the '{response}' and save it as {string}")
+    @When("I extract the {string} from the '{response}' with saving it as {string}")
     public void extractAndSave(String path, Response response, String contextKey) {
         scenarioContext.add(contextKey, response.then().extract().path(path));
     }

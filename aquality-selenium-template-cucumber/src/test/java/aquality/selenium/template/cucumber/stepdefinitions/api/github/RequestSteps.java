@@ -16,8 +16,8 @@ public class RequestSteps {
         this.scenarioContext = scenarioContext;
     }
 
-    @When("I send GET '{endpoint}' request to github and save the '{responseKey}'")
-    @When("I send GET request to github endpoint saved as '{contextKey}' and save the '{responseKey}'")
+    @When("I send GET '{endpoint}' request to github with saving the '{responseKey}'")
+    @When("I send GET request to github endpoint saved as '{contextKey}' with saving the '{responseKey}'")
     public void sendGetRequestToGitHubAndSaveResponse(String endpoint, String contextKey) {
         Response response = commonGiven().when().get(endpoint);
         scenarioContext.add(contextKey, response);
