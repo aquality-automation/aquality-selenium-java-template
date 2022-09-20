@@ -7,13 +7,13 @@ import java.nio.file.Paths;
 
 @UtilityClass
 public class FileHelper {
-    private static final String resourcesPath = "/src/test/resources/";
+    private static final String RESOURCES_PATH = "/src/test/resources/";
 
     private static String getProjectBaseDir(){
         return  System.getProperty("user.dir") != null ? System.getProperty("user.dir") : System.getProperty("project.basedir");
     }
 
     public static File getResourceFileByName(String fileName) {
-        return Paths.get(getProjectBaseDir(), resourcesPath + fileName).toFile();
+        return Paths.get(getProjectBaseDir(), RESOURCES_PATH + fileName).toFile();
     }
 }
