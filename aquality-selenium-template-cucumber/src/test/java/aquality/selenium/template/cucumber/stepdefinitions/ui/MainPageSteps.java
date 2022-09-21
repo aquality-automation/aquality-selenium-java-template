@@ -1,4 +1,4 @@
-package aquality.selenium.template.cucumber.stepdefinitions;
+package aquality.selenium.template.cucumber.stepdefinitions.ui;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.template.configuration.Configuration;

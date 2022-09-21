@@ -1,3 +1,4 @@
 {
-  "startUrl": "https://www.a1qa.com/"
+  "startUrl": "https://www.a1qa.com/",
+  "apiUrl": "https://api.github.com/"
 }

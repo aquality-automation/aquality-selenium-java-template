@@ -1,4 +1,4 @@
-package aquality.selenium.template.cucumber.stepdefinitions;
+package aquality.selenium.template.cucumber.stepdefinitions.ui;
 
 import aquality.selenium.template.forms.pages.ContactUsPage;
 import aquality.selenium.template.models.ContactUsInfo;
