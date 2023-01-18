@@ -26,7 +26,6 @@ public class ContactUsPageSteps {
         contactUsPage.setName(contactUsInfo.getName())
                 .setCompany(contactUsInfo.getCompany())
                 .setPhone(contactUsInfo.getPhone())
-                .setEmail(contactUsInfo.getEmail())
                 .setComment(contactUsInfo.getComment());
     }
 

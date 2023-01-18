@@ -17,7 +17,7 @@ public class ContactUsPage extends BaseAppForm {
     private final ITextBox txbComment = getElementFactory().getTextBox(By.id("your-message"), "Comment");
     private final ICheckBox cmbPrivacy = getElementFactory().getCheckBox(By.name("privacy"), "Privacy", ElementState.EXISTS_IN_ANY_STATE);
     private final IButton btnSend = getElementFactory().getButton(By.xpath("//*[contains(@class,'contactsForm__submit')]//button"), "Send");
-    private final ILabel lblEmailAlert = getElementFactory().getLabel(By.id("modal-contacts-thanks"), "Email validating message");
+    private final ILabel lblEmailAlert = getElementFactory().getLabel(By.xpath("//div[contains(@class,'error')]//input[@id='your-email']"), "Email validating message");
 
     public ContactUsPage(){
         super(By.xpath("//section[contains(@class,'contactsForm')]"), "Contact Us");
