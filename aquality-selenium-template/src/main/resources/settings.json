@@ -9,7 +9,6 @@
     "chrome": {
       "webDriverVersion": "latest",
       "capabilities": {
-        "enableVNC": true
       },
       "options": {
         "intl.accept_languages": "en",
@@ -17,7 +16,10 @@
         "profile.default_content_settings.popups": "0",
         "disable-popup-blocking": "true",
         "download.prompt_for_download": "false",
-        "download.default_directory": "//home//selenium//downloads"
+        "download.default_directory": "./downloads"
+      },
+      "loggingPreferences": {
+        "Performance": "All"
       },
       "startArguments": [
         "window-size=1920,1080",
@@ -28,6 +30,23 @@
         "--headless"
       ]
     },
+    "edge": {
+      "webDriverVersion": "latest",
+      "capabilities": {
+      },
+      "options": {
+        "intl.accept_languages": "en",
+        "safebrowsing.enabled": "true",
+        "profile.default_content_settings.popups": "0",
+        "disable-popup-blocking": "true",
+        "download.prompt_for_download": "false",
+        "download.default_directory": "./downloads"
+      },
+      "loggingPreferences": {
+        "Performance": "All"
+      },
+      "startArguments": []
+    },
     "firefox": {
       "webDriverVersion": "latest",
       "capabilities": {
@@ -35,7 +54,7 @@
       },
       "options": {
         "intl.accept_languages": "en",
-        "browser.download.dir": "//home//selenium//downloads",
+        "browser.download.dir": "./downloads",
         "browser.download.folderList": 2,
         "browser.helperApps.neverAsk.saveToDisk": "application/octet-stream, application/x-debian-package, application/x-www-form-urlencod, application/json, application/x-compressed, application/x-zip-compressed, application/zip, multipart/x-zip, text/plain, text/csv",
         "browser.helperApps.alwaysAsk.force": false,
@@ -57,6 +76,21 @@
         "ignoreProtectedModeSettings": true
       }
     },
+    "opera": {
+      "webDriverVersion": "latest",
+      "binaryLocation": "%USERPROFILE%\\AppData\\Local\\Programs\\Opera\\launcher.exe",
+      "capabilities": {
+      },
+      "options": {
+        "intl.accept_languages": "en",
+        "safebrowsing.enabled": "true",
+        "profile.default_content_settings.popups": "0",
+        "disable-popup-blocking": "true",
+        "download.prompt_for_download": "false",
+        "download.default_directory": "./downloads"
+      },
+      "startArguments": ["--remote-debugging-port=9222", "--no-sandbox", "--disable-dev-shm-usage"]
+    },
     "safari": {
       "downloadDir": "/Users/username/Downloads"
     }
@@ -74,7 +108,8 @@
     "pollingInterval": 300
   },
   "logger": {
-    "language": "en"
+    "language": "en",
+    "logPageSource": true
   },
   "elementCache": {
     "isEnabled": false
