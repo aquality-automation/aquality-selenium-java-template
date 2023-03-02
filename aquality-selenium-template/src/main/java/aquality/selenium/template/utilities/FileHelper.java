@@ -22,7 +22,6 @@ public class FileHelper {
 
     @SneakyThrows
     public static File getJavascriptFileByName(String fileNameWithoutExtension) {
-
         return new File(Objects.requireNonNull(
                 FileHelper.class.getResource(JAVASCRIPT_PATH + fileNameWithoutExtension + ".js")).toURI());
     }
