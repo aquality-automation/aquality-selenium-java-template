@@ -1,0 +1,7 @@
+{
+  "type": "array",
+  "items": {
+    "$ref": "UserResponse.json"
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

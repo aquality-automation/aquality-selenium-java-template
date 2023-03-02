@@ -1,0 +1,24 @@
+{
+  "required": [
+    "login",
+    "id",
+    "avatar_url",
+    "site_admin"
+  ],
+  "type": "object",
+  "properties": {
+    "login": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "site_admin": {
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}
