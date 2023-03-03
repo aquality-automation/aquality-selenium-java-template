@@ -1,32 +1,23 @@
 package aquality.selenium.template.utilities;
 
-import aquality.selenium.browser.AqualityServices;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategy;
-
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import static aquality.selenium.browser.AqualityServices.getBrowser;
+import static aquality.selenium.browser.AqualityServices.getLogger;
+import static aquality.selenium.template.utilities.FileHelper.getJavascriptFileByName;
 
 public class ScreenshotProvider implements IScreenshotProvider {
 
     public byte[] takeScreenshot() {
-        int scrollTimeout = 500;
-        ShootingStrategy shootingStrategy = ShootingStrategies.viewportPasting(scrollTimeout);
-        Screenshot fpScreenshot = new AShot()
-                .shootingStrategy(shootingStrategy)
-                .takeScreenshot(AqualityServices.getBrowser().getDriver());
-
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            ImageIO.write(fpScreenshot.getImage(), "jpg", baos);
-            baos.flush();
-            return baos.toByteArray();
-        } catch (IOException ioe) {
-            AqualityServices.getLogger()
-                    .debug("IO Exception during preparing screenshot of full page%nException message", ioe);
-            return new byte[] {};
+        try {
+            int fullWidth = (int)(long) getBrowser().executeScript(getJavascriptFileByName("getScrollHeight"));
+            int fullHeight = (int)(long) getBrowser().executeScript(getJavascriptFileByName("getScrollHeight"));
+            getBrowser().setWindowSize(fullWidth, fullHeight);
+            return getBrowser().getScreenshot();
+        }
+        catch (IOException exception) {
+            getLogger().fatal("IO Exception during preparing screenshot of full page", exception);
+            return new byte[0];
         }
     }
 }
