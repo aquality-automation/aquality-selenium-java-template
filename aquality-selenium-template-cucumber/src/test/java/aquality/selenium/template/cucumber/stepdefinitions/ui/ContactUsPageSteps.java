@@ -3,8 +3,10 @@ package aquality.selenium.template.cucumber.stepdefinitions.ui;
 import aquality.selenium.template.forms.pages.ContactUsPage;
 import aquality.selenium.template.models.ContactUsInfo;
 import io.cucumber.java.Transpose;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 import static org.testng.Assert.assertTrue;
 
@@ -43,5 +45,15 @@ public class ContactUsPageSteps {
     public void checkEmptyFieldWarning() {
         assertTrue(contactUsPage.isEmailValidationMessagePresent(),
                 "Email validation message should be displayed");
+    }
+
+    @When("I save Contact us page dump")
+    public void saveContactUsPageDump() {
+        contactUsPage.dump().save();
+    }
+
+    @And("Contact us page dump is different")
+    public void contactUsPageDumpIsDifferent() {
+        Assert.assertTrue(contactUsPage.dump().compare() > 0, "The form dump should differ");
     }
 }
