@@ -44,4 +44,14 @@ public class ContactUsPageSteps {
         assertTrue(contactUsPage.isEmailValidationMessagePresent(),
                 "Email validation message should be displayed");
     }
+
+    @When("I save Contact us page dump")
+    public void saveContactUsPageDump() {
+        contactUsPage.dump().save();
+    }
+
+    @Then("Contact us page dump is different")
+    public void contactUsPageDumpIsDifferent() {
+        assertTrue(contactUsPage.dump().compare() > 0, "The form dump should differ");
+    }
 }
