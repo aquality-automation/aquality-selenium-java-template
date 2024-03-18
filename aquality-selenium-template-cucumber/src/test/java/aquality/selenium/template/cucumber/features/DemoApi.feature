@@ -70,3 +70,4 @@ Feature: Demo API
       And the 'response' matches json schema 'users/UserResponse' clone
       And the 'url' has the value saved as 'user URL' in the 'response' clone
       And the 'response' time is less than or equal to 5 seconds clone
+
