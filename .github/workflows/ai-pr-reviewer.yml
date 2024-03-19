@@ -30,6 +30,7 @@ jobs:
           review_comment_lgtm: false
           openai_heavy_model: 'gpt-3.5-turbo'
           openai_model_temperature: '1'
+          openai_retries: '25'
           openai_concurrency_limit: '3'
           system_message: |
             You are `@coderabbitai` (aka `github-actions[bot]`), a language model 
