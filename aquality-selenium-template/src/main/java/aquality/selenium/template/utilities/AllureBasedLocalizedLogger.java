@@ -1,4 +1,4 @@
-package aquality.selenium.template.cucumber.objectfactory;
+package aquality.selenium.template.utilities;
 
 import aquality.selenium.core.configurations.ILoggerConfiguration;
 import aquality.selenium.core.localization.ILocalizationManager;
@@ -16,15 +16,20 @@ import java.util.Date;
  */
 public class AllureBasedLocalizedLogger extends LocalizedLogger {
     private final ILocalizationManager localizationManager;
+    private final Logger logger;
 
     @Inject
     public AllureBasedLocalizedLogger(ILocalizationManager localizationManager, Logger logger, ILoggerConfiguration loggerConfiguration) {
         super(localizationManager, logger, loggerConfiguration);
         this.localizationManager = localizationManager;
+        this.logger = logger;
     }
 
     private String localizeMessage(String messageKey, Object... args) {
-        return localizationManager.getLocalizedMessage(messageKey, args);
+        if (messageKey.startsWith("loc.")) {
+            return localizationManager.getLocalizedMessage(messageKey, args);
+        }
+        return String.format(messageKey, args);
     }
 
     @Override
@@ -38,7 +43,7 @@ public class AllureBasedLocalizedLogger extends LocalizedLogger {
     public void info(String messageKey, Object... args) {
         String message = localizeMessage(messageKey, args);
         addStepToAllure(message);
-        super.info(messageKey, args);
+        this.logger.info(message);
     }
 
     private void addStepToAllure(String message) {
