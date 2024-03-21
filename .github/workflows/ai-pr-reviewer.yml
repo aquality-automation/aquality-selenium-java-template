@@ -29,7 +29,7 @@ jobs:
           review_simple_changes: false
           review_comment_lgtm: false
           openai_heavy_model: 'gpt-3.5-turbo'
-          openai_model_temperature: '0.1'
+          openai_model_temperature: '0.05'
           openai_retries: '25'
           openai_concurrency_limit: '3'
           system_message: |
