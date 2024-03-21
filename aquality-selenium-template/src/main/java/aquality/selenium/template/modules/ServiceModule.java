@@ -1,10 +1,10 @@
-package aquality.selenium.template.cucumber.objectfactory;
+package aquality.selenium.template.modules;
 
 import aquality.selenium.template.utilities.IScreenshotProvider;
 import aquality.selenium.template.utilities.ScreenshotProvider;
 import com.google.inject.AbstractModule;
 
-final class ServiceModule extends AbstractModule {
+public final class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {

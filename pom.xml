@@ -20,6 +20,7 @@
     <modules>
         <module>aquality-selenium-template</module>
         <module>aquality-selenium-template-cucumber</module>
+        <module>aquality-selenium-template-testng</module>
     </modules>
 
     <properties>
