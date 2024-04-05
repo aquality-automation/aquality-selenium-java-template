@@ -27,7 +27,7 @@ jobs:
         with:
           debug: false
           review_simple_changes: false
-          openai_heavy_model: 'gpt-4-turbo'
+          openai_heavy_model: 'gpt-4-1106-preview'
           review_comment_lgtm: false
           system_message: |
             You are `@coderabbitai` (aka `github-actions[bot]`), a language model 
