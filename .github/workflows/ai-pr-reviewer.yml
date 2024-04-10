@@ -29,4 +29,4 @@ jobs:
           openai_engine: "gpt-4-1106-preview" #optional
           openai_temperature: 0.05 #optional
           openai_max_tokens: 300000 #optional
-          mode: file # file or patch 
+          mode: patch # file or patch 
