@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Apr 10 16:28:29 GMT 2024","Wed Apr 10 16:28:31 GMT 2024","2634","","Demo API","","GET users info","","GET users info",""
+"passed","Wed Apr 10 16:28:28 GMT 2024","Wed Apr 10 16:28:38 GMT 2024","9424","","Demo","","Empty email validation is working on Contact Us page","","Empty email validation is working on Contact Us page",""
+"passed","Wed Apr 10 16:28:28 GMT 2024","Wed Apr 10 16:28:29 GMT 2024","131","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
+"passed","Wed Apr 10 16:28:29 GMT 2024","Wed Apr 10 16:28:31 GMT 2024","2532","","Demo API","","GET organization info","","GET organization info",""
+"passed","Wed Apr 10 16:28:28 GMT 2024","Wed Apr 10 16:28:31 GMT 2024","2814","","Demo API","","GET user info","","GET user info",""
+"passed","Wed Apr 10 16:28:28 GMT 2024","Wed Apr 10 16:28:28 GMT 2024","61","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
