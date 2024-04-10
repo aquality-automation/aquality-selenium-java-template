@@ -26,7 +26,7 @@ jobs:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_pr_id: ${{ github.event.number }}
-          openai_engine: "gpt-4-1106-preview" #optional
+          #openai_engine: "gpt-4" #optional
           openai_temperature: 0.05 #optional
-          openai_max_tokens: 300000 #optional
+          #openai_max_tokens: 300000 #optional
           mode: patch # file or patch 
