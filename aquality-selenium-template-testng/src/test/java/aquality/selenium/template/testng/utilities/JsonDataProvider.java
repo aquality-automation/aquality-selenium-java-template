@@ -21,7 +21,7 @@ public class JsonDataProvider {
         return getDataListFromJson("contacts", ContactUsInfo[].class);
     }
 
-    private Object[][] getDataListFromJson(String filename, Class<? extends Object[]> valueType) {
+    private Object[][] getDataListFromJson(String filename, Class<? extends Object[]> valueType) throws IOException {
         Object[] dataList;
         try {
             File file = Paths.get(String.format("src/test/resources/data/%s.json", filename)).toFile();
@@ -29,7 +29,7 @@ public class JsonDataProvider {
         }
         catch (IOException exception) {
             AqualityServices.getLogger().debug("IO error occurred while reading the data from the file " + filename, exception);
-            throw new RuntimeException(exception);
+            throw exception;
         }
         return new Object[][] {dataList};
     }
