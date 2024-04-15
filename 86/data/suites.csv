@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:20:55 GMT 2024","2575","","Demo API","","GET users info","","GET users info",""
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:21:01 GMT 2024","9520","","Demo","","Empty email validation is working on Contact Us page","","Empty email validation is working on Contact Us page",""
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:20:52 GMT 2024","54","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:20:55 GMT 2024","2774","","Demo API","","GET user info","","GET user info",""
+"passed","Mon Apr 15 17:21:09 GMT 2024","Mon Apr 15 17:21:13 GMT 2024","3490","Surefire suite","Surefire test","aquality.selenium.template.testng.tests.ContactUsTests","aquality.selenium.template.testng.tests.ContactUsTests","testEmailValidation","Empty email validation is working on Contact Us page",""
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:20:55 GMT 2024","2487","","Demo API","","GET organization info","","GET organization info",""
+"passed","Mon Apr 15 17:20:52 GMT 2024","Mon Apr 15 17:20:52 GMT 2024","166","","Demo","","ScenarioContext demo","","ScenarioContext demo",""
