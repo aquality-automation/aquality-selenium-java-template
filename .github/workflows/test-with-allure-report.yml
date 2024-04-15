@@ -25,7 +25,7 @@ jobs:
   build-and-test:
     env:
       CUCUMBER_ALLURE_RESULTS: aquality-selenium-template-cucumber/target/allure-results
-      TESTNG_ALLURE_RESULTS: aquality-selenium-template-cucumber/target/allure-results
+      TESTNG_ALLURE_RESULTS: aquality-selenium-template-testng/target/allure-results
       ENVIRONMENT: ${{ github.event.inputs.environment == '' && 'stage' ||  github.event.inputs.environment }}
       GH_PAGES_URL: https://aquality-automation.github.io/aquality-selenium-java-template
     concurrency: test-${{ github.event.inputs.environment == '' && 'stage' || github.event.inputs.environment }}
