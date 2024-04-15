@@ -2,6 +2,9 @@
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=aquality-automation_aquality-selenium-java-template&metric=alert_status)](https://sonarcloud.io/dashboard?id=aquality-automation_aquality-selenium-java-template)
 [![Allure report](https://github.com/aquality-automation/aquality-selenium-java-template/actions/workflows/test-with-allure-report.yml/badge.svg)](https://aquality-automation.github.io/aquality-selenium-java-template/)
 
+# This template provides example projects for TestNG and Cucumber. To use it, you need to delete the unused module.
+# The Allure report is also used. If you don't need it, also delete it from the code.
+
 # Aquality Selenium Template Project
 Template for [aquality-selenium-java](https://github.com/aquality-automation/aquality-selenium-java) library.
 
@@ -18,6 +21,10 @@ Template for [aquality-selenium-java](https://github.com/aquality-automation/aqu
   - **runners/**: Cucumber test runners
   - **stepdefinitions/**: step definition classes
   - **transformations/**: Cucumber [data transformations](https://cucumber.io/docs/cucumber/configuration/)
+- **aquality-selenium-template-testng** - TestNG implementation of the tests
+  - **steps/**: step classes
+  - **utilities/**: utils for testNG, such as JsonDataProvider and ModuleFactory
+  - **tests/**: classes with test methods
 
 ### Configuration
 [settings.json](https://github.com/aquality-automation/aquality-selenium-java-template/blob/master/aquality-selenium-template/src/main/resources/settings.json) file contains settings of Aquality Selenium library. Additional information you can find [here](https://github.com/aquality-automation/aquality-selenium-java/wiki/Overview-(English)).
