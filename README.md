@@ -3,7 +3,9 @@
 [![Allure report](https://github.com/aquality-automation/aquality-selenium-java-template/actions/workflows/test-with-allure-report.yml/badge.svg)](https://aquality-automation.github.io/aquality-selenium-java-template/)
 
 # This template provides example projects for TestNG and Cucumber. To use it, you need to delete the unused module.
+
 # The Allure report is also used. If you don't need it, also delete it from the code.
+
 
 # Aquality Selenium Template Project
 Template for [aquality-selenium-java](https://github.com/aquality-automation/aquality-selenium-java) library.
