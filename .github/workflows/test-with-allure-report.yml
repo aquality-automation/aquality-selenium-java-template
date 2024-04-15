@@ -52,7 +52,7 @@ jobs:
         
       - name: Copy TestNG allure result to the Cucumber allure result
         if: always()
-        run: cp -r ${{ env.TESTNG_ALLURE_RESULTS }}. ${{ env.CUCUMBER_ALLURE_RESULTS }}
+        run: cp -r ${{ env.TESTNG_ALLURE_RESULTS }}/. ${{ env.CUCUMBER_ALLURE_RESULTS }}
 
       - name: Get Allure history
         uses: actions/checkout@v2
