@@ -97,6 +97,11 @@ public class LobbySteps extends BaseSteps {
         new LobbyScreen().clickUpgradeNotification();
     }
 
+    @Step("Opening Starscapes")
+    public void openStarscapes() {
+        new LobbyScreen().clickStarscapesBtn();
+    }
+
     // asserting steps
     @Step("Asserting that lobby is opened")
     public void assertThatLobbyIsOpened() {
@@ -290,5 +295,10 @@ public class LobbySteps extends BaseSteps {
     @Step("Asserting that 'rr Strikes' notification is not present")
     public void assertThatLSNotificationIsNotPresent() {
         assertion.assertTrue(new LobbyScreen().isLsNotificationNotPresent(), "'rr Strikes' notification is present");
+    }
+
+    @Step("Asserting Starscapes button is present")
+    public void assertStarscapesButtonIsPresent() {
+        new LobbyScreen().isStarscapesBtnPresent();
     }
 }

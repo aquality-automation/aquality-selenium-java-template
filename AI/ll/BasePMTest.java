@@ -7,6 +7,7 @@ import com.project.automation.commands.models.UpdateRulesRequest;
 import com.project.automation.constants.CommonTestConstants;
 import com.project.automation.constants.MissionsConstants;
 import com.project.automation.constants.PigletBankConstants;
+import com.project.automation.constants.StarscapesConstants;
 import com.project.automation.enums.*;
 import com.project.automation.enums.config.TestProperty;
 import com.project.automation.enums.pigletbank.PigletBankType;
@@ -237,6 +238,16 @@ public class BasePMTest extends BaseTest implements ICollectablesTest {
         ApiSteps.get().setAbTestingConfigForUser(this.user, AbTestingConfig.builder()
                 .experimentConfigId(SPIN_TO_WIN_VS_BET_UP_MECHANIC_CONFIG_ID)
                 .variantConfigId(SPIN_TO_WIN_VS_BET_UP_MECHANIC_ENABLE_ID).build());
+        AppSteps.get().relaunchApp();
+    }
+
+    @BeforeMethod(alwaysRun = true, dependsOnMethods = "beforeMethod", onlyForGroups = "base_starscapes_nonlinear")
+    public void enableStarscapesNonlinear() {
+        this.user = UserSteps.get().getUserInformation();
+        ApiSteps.get().setStarscapes(user, StarscapesConstants.STARSCAPES_NONLINEAR_ENABLE_ID);
+        ApiSteps.get().setAssetBundleResource(user, StarscapesConstants.CDN_BUNDLE_RESOURCE_ID);
+        ApiSteps.get().setStarscapesWelcomingPopUpSeen(user, true);
+        ApiSteps.get().setStarscapesWelcomingBonusAwardedAndTutorialSeen(user, true);
         AppSteps.get().relaunchApp();
     }
 

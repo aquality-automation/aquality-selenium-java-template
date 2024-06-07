@@ -518,6 +518,31 @@ public class ApiSteps extends BaseSteps {
         AppSteps.get().sleep(WAIT_FOR_API_STABLE_WORK);
     }
 
+    @Step("Setting Starscapes welcoming pop up seen ")
+    public void setStarscapesWelcomingPopUpSeen(User user, boolean isSeen) {
+        setUserFlag(user.getApiToken(), UserFlags.builder().starscapesNonlinearOnboardingSeen(isSeen).build());
+    }
+
+    @Step("Setting Starscapes welcoming bonus awarded and tutorial seen ")
+    public void setStarscapesWelcomingBonusAwardedAndTutorialSeen(User user, boolean isSeen) {
+        setUserFlag(user.getApiToken(), UserFlags.builder().starscapesNonlinearOnboardingRewardsAwarded(isSeen).build());
+    }
+
+    //In order to enable Starscapes we need to set A/B test Asset Bundle Resource to CND variant
+    @Step("Setting Starscapes to '{variantConfig}'")
+    public void setStarscapes(User user, String variantConfig) {
+        setAbTestingConfigForUser(user, AbTestingConfig.builder().experimentConfigId(StarscapesConstants.STARSCAPES_AB_TEST_ID)
+                .variantConfigId(variantConfig)
+                .build());
+    }
+
+    @Step("Setting Asset Bundle Resource to '{variantConfig}'")
+    public void setAssetBundleResource(User user, String variantConfig) {
+        setAbTestingConfigForUser(user, AbTestingConfig.builder().experimentConfigId(StarscapesConstants.ASSET_BUNDLE_SOURCE_AB_TEST_ID)
+                .variantConfigId(variantConfig)
+                .build());
+    }
+
     @Step("Getting Piglet Bank instance id")
     private Long getPigletBankInstanceId(User user, PigletBankType type) {
         PiggyBanksResponse response = PIGGY_BANK_CLIENT.getPiggyBanks(user.getApiToken());
@@ -572,6 +597,10 @@ public class ApiSteps extends BaseSteps {
                         DataHolder.getGrafanaProperty(GrafanaProperty.GAMEBENCH_DASHBOARD_API_USERNAME),
                         DataHolder.getGrafanaProperty(GrafanaProperty.GAMEBENCH_DASHBOARD_API_TOKEN))
                 .getSessionGpuMetrics(sessionId);
+    }
+
+    private void setUserFlag(@NonNull String userApiToken, UserFlags flags) {
+        USER_FLAGS_CLIENT.setUserFlag(FlagsModel.builder().apiToken(userApiToken).flags(flags).build());
     }
 
     private int getRequiredPointsForItem(GetCollectablesResponse response, int item, int level) {
