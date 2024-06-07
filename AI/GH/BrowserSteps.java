@@ -51,6 +51,11 @@ public class BrowserSteps extends BaseSteps {
         BrowserManager.openPage(url);
     }
 
+    @Step("Navigate to Invalid Url {invalidUrl}")
+    public void navigateToInvalidUrl(String invalidUrl) {
+        BrowserManager.openInvalidUrl(invalidUrl);
+    }
+
     @Step("Go back to previous page")
     public void goBack() {
         BrowserManager.back();
