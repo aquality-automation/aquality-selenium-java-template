@@ -68,8 +68,8 @@ public class LobbySteps extends BaseSteps {
     }
 
     @Step("Tapping Collectables icon")
-    public void tapCollectablesIcon() {
-        new LobbyScreen().tapCollectablesIcon();
+    public void clickCollectablesIcon() {
+        new LobbyScreen().clickCollectablesButton();
     }
 
     @Step("Tapping any available slot")
@@ -242,7 +242,7 @@ public class LobbySteps extends BaseSteps {
 
     @Step("Asserting that Collectables icon is present in Lobby'")
     public void assertThatCollectablesIconIsPresent() {
-        assertion.assertTrue(new LobbyScreen().isCollectablesIconPresent(), "Collectables icon is not present in Lobby");
+        assertion.assertTrue(new LobbyScreen().isCollectablesButtonPresent(), "Collectables icon is not present in Lobby");
     }
 
     @Step("Asserting that Upgrade notification is present")

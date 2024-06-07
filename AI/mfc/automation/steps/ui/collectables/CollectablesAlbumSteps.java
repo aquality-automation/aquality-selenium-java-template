@@ -13,15 +13,19 @@ import com.myproject.automation.screens.collectables.CollectablesAlbumScreen;
 import com.myproject.automation.screens.collectables.CollectablesLoadingScreen;
 import com.myproject.automation.screens.collectables.ItemsDetailsScreen;
 import com.myproject.automation.steps.api.ApiSteps;
+import com.myproject.automation.steps.ui.AppSteps;
 import com.myproject.automation.utils.waiters.AwaitilityWrapper;
+import com.myproject.automation.utils.waiters.SmartWait;
 import io.qameta.allure.Step;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.Point;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static com.myproject.automation.constants.CollectablesConstants.COUNT_ITEMS_ON_SET;
 
 public class CollectablesAlbumSteps extends BaseSteps {
 
@@ -112,8 +116,8 @@ public class CollectablesAlbumSteps extends BaseSteps {
 
     @Step("Asserting that Lobby decor item {itemNumber} progress value is correct on 'Collectables Album'")
     public void assertThatLobbyDecorItemProgressIsCorrect(int itemNumber, String progressValue) {
-        assertion.assertTrue(AwaitilityWrapper.waitForCondition(() -> new CollectablesAlbumScreen().getProgressValue(itemNumber).equals(progressValue),
-                        DataHolder.getTimeout(Timeout.SHORT_CONDITION_SECONDS)),
+        assertion.assertTrue(AwaitilityWrapper.waitForCondition(() -> new CollectablesAlbumScreen().getProgressValue(itemNumber)
+                        .equals(progressValue), DataHolder.getTimeout(Timeout.SHORT_CONDITION_SECONDS)),
                 "Lobby decor item progress value is not correct");
     }
 
@@ -121,11 +125,6 @@ public class CollectablesAlbumSteps extends BaseSteps {
     public void assertThatCloseBtnOnCollectablesAlbumIsPresent() {
         assertion.assertTrue(new CollectablesAlbumScreen().isCloseBtnPresent(),
                 "Close button is not present on the 'Collectables Album' screen");
-    }
-
-    @Step("Asserting that Item name is not the same as expected on the Item details screen")
-    public void assertItemsNameIsNotSameOnItemDetailsScreen(String itemName) {
-        assertion.assertNotEquals(new ItemsDetailsScreen().getItemName(), itemName, "Item name is the same as expected on the Item details screen");
     }
 
     @Step("Asserting that Item name is the same as expected on the Item details screen")
@@ -161,21 +160,6 @@ public class CollectablesAlbumSteps extends BaseSteps {
         SoftAssert softAssert = new SoftAssert();
         Stream.of(CollectablesItem.values()).forEach(x -> softAssert.assertTrue(new CollectablesAlbumScreen().isItemInStatePresent(x, x.getSilverSprite()),
                 String.format("Lobby decor item %s is not displayed in silver state on the Collectables Home Page", x)));
-        softAssert.assertAll();
-    }
-
-    @Step("Asserting that lobby decor items of base state are displayed on the Collectables Home Page")
-    public void assertThatLobbyDecorItemsAreDisplayedInBaseState() {
-        SoftAssert softAssert = new SoftAssert();
-        Stream.of(CollectablesItem.values()).forEach(x -> {
-            if (StringUtils.isEmpty(x.getBaseSprite())) {
-                softAssert.assertTrue(new CollectablesAlbumScreen().isItemNotPresent(x),
-                        String.format("Lobby decor item %s is not displayed in base state on the Collectables Home Page", x));
-            } else {
-                softAssert.assertTrue(new CollectablesAlbumScreen().isItemInStatePresent(x, x.getBaseSprite()),
-                        String.format("Lobby decor item %s is not displayed in base state on the Collectables Home Page", x));
-            }
-        });
         softAssert.assertAll();
     }
 
@@ -242,5 +226,34 @@ public class CollectablesAlbumSteps extends BaseSteps {
     public void assertThatInfoBtnOnCollectablesAlbumIsPresent() {
         assertion.assertTrue(new CollectablesAlbumScreen().isInfoBtnPresent(),
                 "Info button is not present on the 'Collectables Album' screen");
+    }
+
+    @Step("Asserting that next item arrows are working correctly")
+    public void assertThatNextItemArrowsAreWorkingCorrectly() {
+        assertNavigationArrows(() -> {
+            goToNextItemOnItemDetailsScreen();
+            return null;
+        });
+    }
+
+    @Step("Asserting that previous item arrows are working correctly")
+    public void assertThatPreviousItemArrowsAreWorkingCorrectly() {
+        assertNavigationArrows(() -> {
+            goToPreviousItemOnItemDetailsScreen();
+            return null;
+        });
+    }
+
+    private void assertNavigationArrows(Supplier<Void> navigationSupplier) {
+        SoftAssert softAssert = new SoftAssert();
+        for (int counter = 0; counter < COUNT_ITEMS_ON_SET; counter++) {
+            String itemName = getItemNameOnItemDetailsScreen();
+            navigationSupplier.get();
+            SmartWait.waitForTrue(i -> !new ItemsDetailsScreen().getItemName().equals(itemName),
+                    DataHolder.getTimeout(Timeout.SHORT_CONDITION_SECONDS));
+            softAssert.assertNotEquals(new ItemsDetailsScreen().getItemName(), itemName,
+                    "Item name is the same as expected on the Item details screen");
+        }
+        softAssert.assertAll("One or more navigation arrows are not working correctly");
     }
 }

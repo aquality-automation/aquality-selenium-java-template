@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class CollectablesAlbumScreen extends BaseScreen {
 
     private static final String LOC_ITEM_COMMON_PART = "CollectablesSetItem_View(Clone)";
-    private static final String LOC_IMG_ITEM = LOC_ITEM_COMMON_PART + ">CapsuleContainer Image";
+    private static final String LOC_IMG_ITEM = LOC_ITEM_COMMON_PART + ">!_Required>!_CapsuleImage Image";
     private static final String LOC_BTN_ITEM = LOC_ITEM_COMMON_PART + " Button";
     private static final WsImage IMG_ITEM = new WsImage(LOC_IMG_ITEM, "Item Image");
     private static final String LOC_BTN_ITEM_PROGRESS = "ProgressPanel>Progress_Text";
@@ -28,7 +28,7 @@ public class CollectablesAlbumScreen extends BaseScreen {
     private static final String LOC_IMG_COMPLETE_TICK = "CompletedTick Image";
     private final WsButton btnClose = new WsButton("CloseButton Button", "Close Button");
     private final WsButton btnSkip = new WsButton("SkipButton Button", "Skip Button");
-    private final WsButton btnTrade = new WsButton("LLab_Button_Trade", "Trade Button");
+    private final WsButton btnTrade = new WsButton("CollectablesTrade_Button Button", "Trade Button");
     private final WsImage imgCompleteTick = new WsImage(LOC_IMG_COMPLETE_TICK, "Complete checkmark Image");
     private final WsText txtLightningReward = new WsText("CollectablesSetReward_Lightning(Clone)>JackpotValue_Text TextMeshProUGUI", "Lightning Reward Text");
     private final WsText txtCoinReward = new WsText("CollectablesSetReward_Coins(Clone)>JackpotValue_Text TextMeshProUGUI", "Coin Reward Text");
@@ -42,7 +42,9 @@ public class CollectablesAlbumScreen extends BaseScreen {
     }
 
     public String getProgressValue(int itemNumber) {
-        return getProgressText().get(itemNumber - 1).getText();
+        List<WsText> progressValues = getProgressText();
+        Collections.reverse(progressValues);
+        return progressValues.get(itemNumber - 1).getText();
     }
 
     public boolean isCloseBtnPresent() {
@@ -109,7 +111,7 @@ public class CollectablesAlbumScreen extends BaseScreen {
 
     public boolean isOrbRewardPresent(Orb orbType) {
         return getListOfOrbRewards().stream()
-                .anyMatch(y -> y.getAttribute(Attribute.SPRITE).contains(orbType.getOrbName()));
+                .anyMatch(y -> y.getAttribute(Attribute.SPRITE).contains(orbType.getSprite()));
     }
 
     public boolean isItemInStatePresent(CollectablesItem item, String state) {

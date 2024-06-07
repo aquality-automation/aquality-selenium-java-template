@@ -10,6 +10,7 @@ import com.myproject.automation.enums.config.Timeout;
 import com.myproject.automation.screens.collectables.CollectablesCardsScreen;
 import com.myproject.automation.steps.ui.AppSteps;
 import com.myproject.automation.utils.waiters.AwaitilityWrapper;
+import com.myproject.automation.utils.waiters.SmartWait;
 import io.qameta.allure.Step;
 
 public class CollectablesCardsSteps extends BaseSteps {
@@ -24,6 +25,7 @@ public class CollectablesCardsSteps extends BaseSteps {
 
     @Step("Opening card {cardNumber}")
     public void openCard(int cardNumber) {
+        AppSteps.get().waitForStableResponseFromWebsocket();
         new CollectablesCardsScreen().openCard(cardNumber);
     }
 
@@ -194,8 +196,9 @@ public class CollectablesCardsSteps extends BaseSteps {
 
     @Step("Asserting that bottom bar trade points amount is equal to {totalPointsAmount}")
     public void assertThatBottomBarTradePointsAmountIsEqualTo(double totalPointsAmount) {
-        assertion.assertTrue(AwaitilityWrapper.waitForCondition(() -> new CollectablesCardsScreen().getBottomBarTradePointsAmount() == totalPointsAmount,
-                DataHolder.getTimeout(Timeout.SHORT_CONDITION_SECONDS)), "Bottom bar trade points amount is not equal to expected");
+        SmartWait.waitForTrue(i -> new CollectablesCardsScreen().getBottomBarTradePointsAmount() == totalPointsAmount);
+        assertion.assertEquals(new CollectablesCardsScreen().getBottomBarTradePointsAmount(), totalPointsAmount,
+                "Bottom bar trade points amount is not equal to expected");
     }
 
     @Step("Asserting that Collected Total points amount is equal to {totalPointsAmount} on Collectables cards screen")

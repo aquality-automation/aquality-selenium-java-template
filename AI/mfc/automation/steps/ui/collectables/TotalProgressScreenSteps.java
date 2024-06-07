@@ -3,9 +3,14 @@ package com.myproject.automation.steps.ui.collectables;
 import com.myproject.automation.base.BaseSteps;
 import com.myproject.automation.base.DataHolder;
 import com.myproject.automation.constants.CommonTestConstants;
+import com.myproject.automation.drivers.websocket.SocketDriver;
 import com.myproject.automation.enums.config.Timeout;
+import com.myproject.automation.screens.GameScreen;
+import com.myproject.automation.screens.LobbyScreen;
 import com.myproject.automation.screens.collectables.TotalProgressScreen;
+import com.myproject.automation.steps.ui.AppSteps;
 import com.myproject.automation.utils.waiters.AwaitilityWrapper;
+import com.myproject.automation.utils.waiters.SmartWait;
 import io.qameta.allure.Step;
 
 public class TotalProgressScreenSteps extends BaseSteps {
