@@ -1,6 +1,7 @@
 package com.myproject.automation.screens.collectables;
 
 import com.myproject.automation.base.BaseScreen;
+import com.myproject.automation.base.DataHolder;
 import com.myproject.automation.constants.CommonTestConstants;
 import com.myproject.automation.constants.RegexExpressions;
 import com.myproject.automation.drivers.websocket.SocketDriver;
@@ -12,23 +13,27 @@ import com.myproject.automation.enums.WebsocketComponentType;
 import com.myproject.automation.enums.collectables.CardsFrontImageState;
 import com.myproject.automation.enums.collectables.CollectablesItem;
 import com.myproject.automation.enums.collectables.ItemsStateOnTopCardsScreen;
+import com.myproject.automation.enums.config.Timeout;
 import com.myproject.automation.models.pojo.Element;
 import com.myproject.automation.utils.ParseUtil;
 import com.myproject.automation.utils.RegexUtils;
+import com.myproject.automation.utils.waiters.SmartWait;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectablesCardsScreen extends BaseScreen {
 
-    private static final String LOC_CARD_BTN = "CollectiblesCardItem_Container>Button";
-    private static final String LOC_POINTS = "CardPoints_Text";
-    private static final String LOC_COLLECTED_POINTS = "Points_Text_";
+    private static final String LOC_CARD_BTN = "CollectablesSetItem_View_Reveal(Clone) Button";
+    private static final String LOC_POINTS = "Footer_Container>ProgressPanel>Progress_Text";
+    private static final String LOC_COLLECTED_POINTS = "TradePoints_UpgradeText";
     private static final String LOC_CARDS_FRONT_IMG = "Front Image";
     private static final String LOC_ITEM_ON_TOP_OF_SCREEN_IMG = "CollectablesCardTopBar(Clone)>Container>AssetContainer";
-    private static final WsText TXT_TRADE = new WsText("CollectablesCardsRevealView(Clone)>Body>RevealsFlow>TradeButton>TradeText TextMeshProUGUI",
+    private static final WsText TXT_TRADE = new WsText("CollectablesCardsRevealView(Clone)>Body>RevealsFlow>TradeContainer>TradeText TextMeshProUGUI",
             "Trade Text");
     private final WsButton btnSkipAll = new WsButton("RevealAllButton Button", "Skip all Button");
     private final WsButton btnNext = new WsButton("NextButton Button", "Next Button");
@@ -36,7 +41,7 @@ public class CollectablesCardsScreen extends BaseScreen {
     private final WsButton btnContinue = new WsButton("ContinueButton Button", "Continue Button");
     private final WsText txtCardsCounter = new WsText("CardsCount", "Cards counter Text");
     private final WsImage imgItemAsset = new WsImage("AssetContainer", "Item asset Image");
-    private final WsText txtTopBarCollectablesPoints = new WsText("SummaryValueContainer>Points_Text",
+    private final WsText txtTopBarCollectablesPoints = new WsText("TradePoints_RegularText TextMeshProUGUI",
             "Top bar Collectables Card points Text");
     private final WsText txtBottomBarTradePoints = new WsText("TradePointsContainer>TradePointsCount_Text",
             "Bottom bar trade points Text");
@@ -185,12 +190,12 @@ public class CollectablesCardsScreen extends BaseScreen {
     }
 
     private List<WsText> getListOfCardPoints() {
-        List<WsText> listOfCardPoints = SocketDriver.getElements(LOC_POINTS, WebsocketComponentType.TMPRO_TEXT).stream()
+        Supplier<Stream<WsText>> cardPointText = () -> SocketDriver.getElements(LOC_POINTS, WebsocketComponentType.TMPRO_TEXT)
+                .stream()
                 .filter(element -> element != null && StringUtils.isNotEmpty(element.getText()))
-                .map(el -> new WsText(el.getName(), el.getName()))
-                .collect(Collectors.toList());
-        Collections.reverse(listOfCardPoints);
-        return listOfCardPoints;
+                .map(el -> new WsText(el.getName(), el.getName()));
+        SmartWait.waitForTrue(i -> cardPointText.get().findAny().isPresent());
+        return cardPointText.get().collect(Collectors.toList());
     }
 
     private List<WsButton> getListCardsBtn() {
@@ -207,23 +212,21 @@ public class CollectablesCardsScreen extends BaseScreen {
     }
 
     private List<Element> getCards() {
+        SmartWait.waitForTrue(i -> !SocketDriver.getElements(LOC_CARD_BTN, WebsocketComponentType.UNITY_BUTTON).isEmpty(),
+                DataHolder.getTimeout(Timeout.SHORT_ELEMENT_APPEARANCE_SECONDS));
         return SocketDriver.getElements(LOC_CARD_BTN, WebsocketComponentType.UNITY_BUTTON);
     }
 
     private List<WsText> getListOfTopbarAssets() {
-        List<WsText> listOfTopbarAssets = SocketDriver.getElements(LOC_COLLECTED_POINTS, WebsocketComponentType.TMPRO_TEXT).stream()
+        return SocketDriver.getElements(LOC_COLLECTED_POINTS, WebsocketComponentType.TMPRO_TEXT).stream()
                 .filter(element -> element != null && StringUtils.isNotEmpty(element.getText()))
                 .map(el -> new WsText(el.getName(), el.getName()))
                 .collect(Collectors.toList());
-        Collections.reverse(listOfTopbarAssets);
-        return listOfTopbarAssets;
     }
 
     private List<WsImage> getListOfCardsFrontImages() {
-        List<WsImage> listOfCardsFrontImages = SocketDriver.getElements(LOC_CARDS_FRONT_IMG, WebsocketComponentType.UNITY_IMAGE).stream()
+        return SocketDriver.getElements(LOC_CARDS_FRONT_IMG, WebsocketComponentType.UNITY_IMAGE).stream()
                 .map(el -> new WsImage(el.getName(), el.getName()))
                 .collect(Collectors.toList());
-        Collections.reverse(listOfCardsFrontImages);
-        return listOfCardsFrontImages;
     }
 }

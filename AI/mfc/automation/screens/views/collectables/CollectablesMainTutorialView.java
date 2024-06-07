@@ -6,7 +6,7 @@ import com.myproject.automation.elements.ws.WsText;
 
 public class CollectablesMainTutorialView extends BaseScreen {
 
-    private static final String LOC_FIRST_TUTORIAL_CARD = "Page0%s>Container>TutorialCard01>HeaderText TextMeshProUGUI";
+    private static final String LOC_FIRST_TUTORIAL_CARD = "Page0%s>Container>TutorialCard01>Avatar_Frame_Left>Text_Headline TextMeshProUGUI";
     private static final WsButton BTN_CLOSE = new WsButton("FTUE_CollectablesMainPopUp(Clone)>CloseButton Button", "Close Button");
     private final WsButton btnNextArrow = new WsButton("ButtonArrowNext Button", "Next Arrow Button");
     private final WsButton btnPreviousArrow = new WsButton("ButtonArrowPrevious Button", "Previous Arrow Button");

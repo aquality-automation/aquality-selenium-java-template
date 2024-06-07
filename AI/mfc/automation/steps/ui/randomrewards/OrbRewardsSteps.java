@@ -61,7 +61,7 @@ public class OrbRewardsSteps extends BaseSteps {
 
     @Step("Getting reward value from Orb rewards by sprite {sprite}")
     public double getRewardValueFromOrbRewards(OrbReward orbReward) {
-        return new OrbRewardsView().getRewardValue(orbReward.getSprite());
+        return new OrbRewardsView().getRewardValue(orbReward);
     }
 
     //assertion steps
@@ -91,7 +91,7 @@ public class OrbRewardsSteps extends BaseSteps {
     @Step("Asserting that cards amount value on Orb Reward Screen is equal to '{expAmount}'")
     public void assertThatCardsAmountValueOnOrbRewardScreenIsEqualTo(int expAmount) {
         AppSteps.get().waitForStableResponseFromWebsocket();
-        assertion.assertEquals(new OrbRewardsView().getRewardValue(OrbReward.COLLECTABLES_CARD.getSprite()), expAmount,
+        assertion.assertEquals(new OrbRewardsView().getRewardValue(OrbReward.COLLECTABLES_CARD), expAmount,
                 String.format("Cards amount value is not equal to expected '%d' on Orb Reward Screen", expAmount));
     }
 

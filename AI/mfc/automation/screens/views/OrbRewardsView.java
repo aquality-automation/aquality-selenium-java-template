@@ -7,6 +7,7 @@ import com.myproject.automation.elements.ws.WsButton;
 import com.myproject.automation.elements.ws.WsImage;
 import com.myproject.automation.elements.ws.WsText;
 import com.myproject.automation.enums.Attribute;
+import com.myproject.automation.enums.OrbReward;
 import com.myproject.automation.enums.WebsocketComponentType;
 import com.myproject.automation.utils.ParseUtil;
 
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class OrbRewardsView extends BaseScreen {
 
     protected static final String LOC_IMG_REWARD = "Reward>Icon_Container>Icon_Image";
+    protected static final String LOC_TEXT_IMG_REWARD = "%s>RewardContainer Image 0";
     private static final String LOC_TOTAL_REWARD_ICON = "TopBar_TotalRewards_Container>CollectableBox>Icon Image";
     private static final WsText TXT_YOUR_REWARD = new WsText("NewReward_Text TextMeshProUGUI", "Your reward Text");
     private static final WsText AMOUNT_OF_COINS_FROM_REWARD = new WsText("Reward_01>Reward>Icon_Container>Icon_Image>Value_Text TextMeshProUGUI", "Amount of coins Text");
@@ -64,8 +66,9 @@ public class OrbRewardsView extends BaseScreen {
         btnFinish.tapAroundElement(CommonTestConstants.COUNT_OF_TOUCHES_AROUND_ELEMENT);
     }
 
-    public int getRewardValue(String type) {
-        return ParseUtil.getIntValueWithComma(getReward(type, LOC_IMG_REWARD).getText());
+    public int getRewardValue(OrbReward orbReward) {
+        return ParseUtil.getIntValueWithComma(SocketDriver.getElements(
+                String.format(LOC_TEXT_IMG_REWARD, orbReward.getRewardNumber())).get(0).getText());
     }
 
     public int getTotalRewardValue(String type) {

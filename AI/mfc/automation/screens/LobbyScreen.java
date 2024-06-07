@@ -38,7 +38,7 @@ public class LobbyScreen extends BaseScreen {
     private final WsImage imgLockedStarLevel = new WsImage("LockedStarLevelButton", "Locked Star Level Image");
     private final WsButton btnLS = new WsButton("LightningStrikesLobbyView>LS_Button Button", "Lightning Strikes Button");
     private final WsText txtLSRewardCount = new WsText("RewardReady>RewardsCount TextMeshProUGUI", "LS Reward Count Text");
-    private final WsImage imgCollectablesIcon = new WsImage("CollectablesButtonContainer Image", "Collectables icon Image");
+    private final WsButton btnCollectablesButton = new WsButton("CollectablesButtonContainer Button", "Collectables Button");
     private final WsImage imgLogoBig = new WsImage("LogoBig Image", "Big Logo Container Image");
     private final WsText txtCardsQuantity = new WsText("ReadyToCollect>Image>Quantity TextMeshProUGUI", "Collectables cards quantity Text");
     private final WsText txtUpgradeNotification = new WsText("Component_Notification_Piglets_Reset(Clone)>Mask>BalancePanel>PiggyNotificationHeader",
@@ -172,12 +172,12 @@ public class LobbyScreen extends BaseScreen {
         return Integer.parseInt(txtLSRewardCount.getText());
     }
 
-    public void tapCollectablesIcon() {
-        imgCollectablesIcon.tap();
+    public void clickCollectablesButton() {
+        btnCollectablesButton.click();
     }
 
-    public boolean isCollectablesIconPresent() {
-        return imgCollectablesIcon.waitForIsPresent();
+    public boolean isCollectablesButtonPresent() {
+        return btnCollectablesButton.waitForIsPresent();
     }
 
     public int getCardsQuantity() {

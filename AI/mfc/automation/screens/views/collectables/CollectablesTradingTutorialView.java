@@ -5,7 +5,7 @@ import com.myproject.automation.elements.ws.WsButton;
 
 public class CollectablesTradingTutorialView extends BaseScreen {
 
-    private static final WsButton BTN_CLOSE = new WsButton("FTUE_CollectablesTradingPopUp(Clone)>CloseButton Button ", "Close Button");
+    private static final WsButton BTN_CLOSE = new WsButton("FTUE_CollectablesTradingPopUp(Clone)>CloseButton Button", "Close Button");
 
     public CollectablesTradingTutorialView() {
         super(BTN_CLOSE, "Collactables Trading Tutorial view");

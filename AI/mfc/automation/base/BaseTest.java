@@ -20,6 +20,7 @@ import com.myproject.automation.enums.config.TestProperty;
 import com.myproject.automation.enums.config.TestrailProperty;
 import com.myproject.automation.exceptions.PMEnvironmentException;
 import com.myproject.automation.exceptions.PMException;
+import com.myproject.automation.listeners.TestRailFilterListener;
 import com.myproject.automation.models.DeviceConfig;
 import com.myproject.automation.models.application.User;
 import com.myproject.automation.models.pojo.Device;
@@ -85,8 +86,6 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
     private boolean isBeforePass = false;
     @Getter
     private ThreadLocal<String> currentTestParametersAsString = new InheritableThreadLocal<>();
-    private static List<DeviceConfig> deviceConfigList = new ArrayList<>();
-    private static List<DeviceConfig> devicesWithIssuesList = new ArrayList<>();
 
     static {
         if (AutomationDriver.isHeadSpinMultipleDeviceLimit() || !DeviceManager.getHeadSpinPredefinedDevices().isEmpty()) {
@@ -94,10 +93,6 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
             Logger.setLogger(StringUtil.appendString(buildDirPath, "headspindevices.log"));
             AutomationDriver.connectToHeadSpinDevicesAndUpdateJsonFile();
             reinstallAppForHsAvailableDevices();
-        }
-        //List of all DeviceConfig for later redistribution to avoid skipped tests due to device issues
-        for (Device device : DeviceManager.getAllAvailableDevices()) {
-            deviceConfigList.add(getDeviceConfig(device));
         }
     }
 
@@ -115,7 +110,6 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
                         break;
                     }
                     releasePort(testResult);
-                    changeUnavailableDevice(testResult);
                     callBack.runConfigurationMethod(testResult);
                 }
             }
@@ -154,10 +148,6 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
                 deviceConfig.getDeviceName(), deviceConfig.getUdid()));
         iTestResult.getMethod().setRetryAnalyzerClass(PMRetryAnalyzer.class);
         try {
-            if (devicesWithIssuesList.stream().anyMatch(device -> device.getUdid().equals(this.deviceConfig.getUdid()))) {
-                Logger.get().info(String.format("Device with issue %s. The device configuration will be changed", this.deviceConfig.getUdid()));
-                changeDeviceConfig();
-            }
             AppSteps.get().init(this.deviceConfig.getUdid(), deviceConfig);
             AppSteps.get().dismissAlertIfPresent();
             SocketDriver.initLogsBuilder();
@@ -322,9 +312,24 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
         Collections.shuffle(devices);
         for (Device activeDevice : devices) {
             BaseTest testClass = this.getClass().getDeclaredConstructor().newInstance();
-            if (testMethodsToInclude.stream().anyMatch(filteredTest -> filteredTest.getName()
-                    .equalsIgnoreCase(testClass.getClass().getSimpleName())) || test.getXmlPackages().isEmpty()) {
-                testClass.deviceConfig = getDeviceConfig(activeDevice);
+            if (testMethodsToInclude.stream().anyMatch(
+                    filteredTest -> filteredTest.getName().equalsIgnoreCase(testClass.getClass().getSimpleName()))
+                    || test.getXmlPackages().isEmpty()
+                    || test.getSuite().getListeners().stream().noneMatch(
+                    listener -> listener.contains(TestRailFilterListener.class.getSimpleName()))
+            ) {
+                testClass.deviceConfig = DeviceConfig.builder()
+                        .deviceName(activeDevice.getModel())
+                        .udid(activeDevice.getUDID())
+                        .hsUdid(activeDevice.getHsUDID())
+                        .deviceAddress(activeDevice.getDeviceAddress())
+                        .ip(activeDevice.getIp())
+                        .wdaPort(activeDevice.getWdaPort())
+                        .port(String.valueOf(SocketUtils.findAvailableTcpPort()))
+                        .useRemoteHeadSpinServer(activeDevice.isUseRemoteHeadSpinServer())
+                        .hsServerUrl(activeDevice.getHsServerUrl())
+                        .platformVersion(activeDevice.getPlatformVersion())
+                        .build();
                 tests.add(testClass);
                 Logger.get().info(String.format("Adding test : %s to run", testClass.getClass().getSimpleName()));
             }
@@ -409,40 +414,5 @@ public abstract class BaseTest extends BaseSteps implements ITest, IConfigurable
             ApiSteps.get().uninstallAppFromHeadSpinBySelector(PLATFORM, DataHolder.getTestProperty(TestProperty.APP_PACKAGE_NAME), udid);
             ApiSteps.get().installAppOnHeadSpin(appId, udid);
         }
-    }
-
-    private static DeviceConfig getDeviceConfig(Device device) {
-        return DeviceConfig.builder()
-                .deviceName(device.getModel())
-                .udid(device.getUDID())
-                .hsUdid(device.getHsUDID())
-                .deviceAddress(device.getDeviceAddress())
-                .ip(device.getIp())
-                .wdaPort(device.getWdaPort())
-                .port(String.valueOf(SocketUtils.findAvailableTcpPort()))
-                .useRemoteHeadSpinServer(device.isUseRemoteHeadSpinServer())
-                .hsServerUrl(device.getHsServerUrl())
-                .platformVersion(device.getPlatformVersion())
-                .build();
-    }
-
-    private void changeUnavailableDevice(ITestResult testResult) {
-        Collections.shuffle(deviceConfigList);
-        Throwable throwable = testResult.getThrowable();
-        if (DeviceErrorUtils.isDeviceErrorMessagePresent(throwable, deviceConfig)) {
-            Logger.get().info(String.format("Adding device %s to the list of devices with issues", deviceConfig.getUdid()));
-            devicesWithIssuesList.add(deviceConfig);
-            changeDeviceConfig();
-            Logger.get().info(String.format("Changed device config to %s", deviceConfig.getUdid()));
-        }
-    }
-
-    private void changeDeviceConfig() {
-        Logger.get().info("Changing device configuration");
-        deviceConfig = deviceConfigList.stream()
-                .filter(device -> !deviceConfig.getUdid().equals(device.getUdid()))
-                .filter(device -> devicesWithIssuesList.stream().noneMatch(issueDevice -> issueDevice.getUdid().equals(device.getUdid())))
-                .findFirst()
-                .orElseThrow(() -> new PMException("No new device found."));
     }
 }

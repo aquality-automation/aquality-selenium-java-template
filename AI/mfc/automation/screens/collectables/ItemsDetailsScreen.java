@@ -17,7 +17,7 @@ public class ItemsDetailsScreen extends BaseScreen {
     private final WsImage imgOrb = new WsImage("RewardPack(Clone)>IconImage Image", "Orb Image");
     private final WsImage imgCoins = new WsImage("CoinsImage Image", "Coins Image");
     private final WsImage imgLightning = new WsImage("LightningImage Image", "Lightning Image");
-    private final WsButton btnBack = new WsButton("CollectablesBack_Button Button", "Back Button");
+    private final WsButton btnBack = new WsButton("CollectablesBack_Button  Button", "Back Button");
 
     public ItemsDetailsScreen() {
         super(TXT_HEADER, "Items details screen", true);

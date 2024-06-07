@@ -25,10 +25,10 @@ public class TradeScreen extends BaseScreen {
     private static final String LOC_TRADE_PACK_IMG = "TradePackItem Image";
     private static final String LOC_UNAVAILABLE_TRADE_PRICES_TXT = "TradeButton_Default>TradePointsCount_Text TextMeshProUGUI";
     private static final String LOC_AVAILABLE_TRADE_PRICE_TXT = "TradeButtonText_Text TextMeshProUGUI";
-    private static final WsText TXT_HEADER = new WsText("CollectablesTradeView(Clone)>Header>Header_Text", "Header Text");
-    private final WsButton btnClose = new WsButton("CollectablesTradeView(Clone)>Header>CloseButton", "Close Button");
+    private static final WsText TXT_HEADER = new WsText("CollectablesTradeView(Clone)>Background>BGCanvas0>Header>Header_Text", "Header Text");
+    private final WsButton btnClose = new WsButton("CollectablesTradeView(Clone)>Background>BGCanvas0>Header>ButtonsBar>CloseButton", "Close Button");
     private final WsButton btnTradePrice = new WsButton("TradeButton_Enabled Button", "Trade Price Button");
-    private final WsButton btnInfo = new WsButton("InfoButton>InfoIcon Button", "Info Button");
+    private final WsButton btnInfo = new WsButton("InfoButton Button", "Info Button");
     private final WsImage imgDisabledTradePrice = new WsImage("TradeButton_Disabled>Bg_Image Image", "Disabled trade Image");
     private final WsImage imgProgressBar = new WsImage("ProgressBarContainer>ProgressBar", "Progress Bar Image");
     private final WsImage imgHighlight = new WsImage("TradePackTileContainer_0>TradePackTile>Milestone", "Highlight Image");

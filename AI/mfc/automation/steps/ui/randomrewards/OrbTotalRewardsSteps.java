@@ -31,17 +31,17 @@ public class OrbTotalRewardsSteps extends BaseSteps {
     @Step("Getting coins reward")
     public double getCoinsReward() {
         SocketDriver.waitForResponseIsStable();
-        return new OrbTotalRewardsView().getRewardValue(OrbReward.COINS.getSprite());
+        return new OrbTotalRewardsView().getRewardValue(OrbReward.COINS);
     }
 
     @Step("Getting Lightning reward value")
     public int getLightningReward() {
-        return new OrbTotalRewardsView().getRewardValue(OrbReward.LIGHTNING_ICON.getSprite());
+        return new OrbTotalRewardsView().getRewardValue(OrbReward.LIGHTNING_ICON);
     }
 
     @Step("Getting Stellar points reward value")
     public int getStellarPointsReward() {
-        return new OrbTotalRewardsView().getRewardValue(OrbReward.STELLAR_POINTS_ICON.getSprite());
+        return new OrbTotalRewardsView().getRewardValue(OrbReward.STELLAR_POINTS_ICON);
     }
 
     //assertion steps
@@ -98,7 +98,7 @@ public class OrbTotalRewardsSteps extends BaseSteps {
     @Step("Asserting that cards amount on Orb Total reward view value is equal to '{expAmount}'")
     public void assertThatCardsAmountValueOnOrbTotalRewardsViewIsEqualTo(int expAmount) {
         AppSteps.get().waitForStableResponseFromWebsocket();
-        assertion.assertEquals(new OrbTotalRewardsView().getRewardValue(OrbReward.COLLECTABLES_CARD.getSprite()), expAmount,
+        assertion.assertEquals(new OrbTotalRewardsView().getRewardValue(OrbReward.COLLECTABLES_CARD), expAmount,
                 String.format("Cards amount value is not equal to expected '%d'", expAmount));
     }
 

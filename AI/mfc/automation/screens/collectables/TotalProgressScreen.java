@@ -20,11 +20,11 @@ public class TotalProgressScreen extends BaseScreen {
             "Total progress header Text");
     private final WsButton btnContinueClaim = new WsButton("ClaimButton Button", "Continue Claim Button");
     private final WsButton btnContinueClose = new WsButton("CloseButton Button", "Continue Close Button");
-    private final WsText txtCollectedTotalPoints = new WsText("TradePoints_Text",
+    private final WsText txtCollectedTotalPoints = new WsText("TradePoints_RegularText TextMeshProUGUI",
             "Collected Total points Text");
     private final WsText txtTradePoints = new WsText("TradePointsContainer>TradePointsCount_Text",
             "Trade points Text");
-    private final WsImage imgJackpotCard = new WsImage("CollectablesJackpotCardSummary(Clone)>Container>AssetContainer Image",
+        private final WsImage imgJackpotCard = new WsImage("CollectablesJackpotCardSummary(Clone)>Container>AssetContainer Image",
             "Jackpot Card Image");
 
     public TotalProgressScreen() {
