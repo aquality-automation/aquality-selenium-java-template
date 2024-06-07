@@ -43,6 +43,7 @@ public class LobbyScreen extends BaseScreen {
             "Upgrade Piggy notification descriptions");
     private final WsText txtUpgradePiggyNotificationHeader = new WsText("PiggyNotification_Text TextMeshProUGUI",
             "Upgrade Piggy notification header");
+    private final WsButton btnStarscapes = new WsButton("StarscapesButton", "Starscapes Button");
 
     public LobbyScreen() {
         super(TXT_BONUS_READY_HEADER, "Lobby screen", true);
@@ -202,5 +203,13 @@ public class LobbyScreen extends BaseScreen {
 
     public String getUpgradePiggyNotificationHeaderText() {
         return txtUpgradePiggyNotificationHeader.getText();
+    }
+
+    public void clickStarscapesBtn() {
+        btnStarscapes.click();
+    }
+
+    public void isStarscapesBtnPresent() {
+        btnStarscapes.waitForIsPresent();
     }
 }
