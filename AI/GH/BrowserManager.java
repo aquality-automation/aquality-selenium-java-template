@@ -9,10 +9,7 @@ import com.appsoftcorp.framework.enums.config.Timeout;
 import com.appsoftcorp.framework.exceptions.PMException;
 import com.appsoftcorp.framework.utils.Logger;
 import com.appsoftcorp.framework.utils.waiters.SmartWait;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WindowType;
+import org.openqa.selenium.*;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -169,5 +166,13 @@ public class BrowserManager {
 
     public static Cookie getCookieNamed(String name) {
         return getWebDriver().manage().getCookieNamed(name);
+    }
+
+    public static void openInvalidUrl(String invalidUrl) {
+        try {
+            Selenide.open(invalidUrl);
+        } catch (WebDriverException exception) {
+            Logger.get().info("WebDriverException occurred: " + exception.getMessage());
+        }
     }
 }
