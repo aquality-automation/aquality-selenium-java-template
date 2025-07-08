@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","180","ScenarioContext demo","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:16 GMT 2025","","Demo","ScenarioContext demo",""
+"","2569","GET users info","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:18 GMT 2025","","Demo API","GET users info",""
+"","2389","GET organization info","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:18 GMT 2025","","Demo API","GET organization info",""
+"","3698","Empty email validation is working on Contact Us page","Surefire suite","Tue Jul 08 09:07:41 GMT 2025","passed","Tue Jul 08 09:07:44 GMT 2025","aquality.selenium.template.testng.tests.ContactUsTests","Surefire test","aquality.selenium.template.testng.tests.ContactUsTests","testEmailValidation"
+"","80","ScenarioContext demo","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:16 GMT 2025","","Demo","ScenarioContext demo",""
+"","13483","Empty email validation is working on Contact Us page","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:29 GMT 2025","","Demo","Empty email validation is working on Contact Us page",""
+"","2698","GET user info","","Tue Jul 08 09:07:16 GMT 2025","passed","Tue Jul 08 09:07:18 GMT 2025","","Demo API","GET user info",""
