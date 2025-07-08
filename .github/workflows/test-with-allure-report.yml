@@ -39,7 +39,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-          cache: maven
 
       - name: Install Google Chrome
         run: |
