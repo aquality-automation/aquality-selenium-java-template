@@ -1,5 +1,5 @@
 package aquality.selenium.template.configuration;
-
+// blaaaaaaaaaaaaaaaaaa
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
@@ -18,3 +18,16 @@ class Environment {
         return new JsonSettingsFile(resourcePath.toString());
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// why im here?
