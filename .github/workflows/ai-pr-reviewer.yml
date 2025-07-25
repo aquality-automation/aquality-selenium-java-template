@@ -15,7 +15,7 @@ jobs:
 
       - uses: akhioafk/ai-pr-reviewer-aqua@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ollama
         with:
           system_message: |
