@@ -1,57 +1,46 @@
-# name: Code Review
+name: Code Review
 
-# permissions:
-#   contents: read
-#   pull-requests: write
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  pull_request_review_comment:
+    types: [created]
 
-# on:
-#   pull_request:
-#   pull_request_review_comment:
-#     types: [created]
+jobs:
+  review:
+    runs-on: [self-hosted, macOS, ARM64]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-# concurrency:
-#   group:
-#     ${{ github.repository }}-${{ github.event.number || github.head_ref ||
-#     github.sha }}-${{ github.workflow }}-${{ github.event_name ==
-#     'pull_request_review_comment' && 'pr_comment' || 'pr' }}
-#   cancel-in-progress: ${{ github.event_name != 'pull_request_review_comment' }}
-
-# jobs:
-#   review:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: coderabbitai/ai-pr-reviewer@latest
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-#         with:
-#           debug: false
-#           review_simple_changes: false
-#           openai_heavy_model: 'gpt-4-1106-preview'
-#           review_comment_lgtm: false
-#           system_message: |
-#             You are `@coderabbitai` (aka `github-actions[bot]`), a language model 
-#             trained by OpenAI. Your purpose is to act as a highly experienced 
-#             test automation engineer and provide a thorough review of the code hunks
-#             and suggest code snippets to improve key areas such as:
-#               - Logic
-#               - Security
-#               - Performance
-#               - Data races
-#               - Consistency
-#               - Error handling
-#               - Maintainability
-#               - Modularity
-#               - Complexity
-#               - Optimization
-#               - Best practices: DRY, SOLID, KISS
+      - uses: akhioafk/ai-pr-reviewer-aqua@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          OPENAI_API_KEY: ollama
+        with:
+          system_message: |
+            You are `@coderabbitai` (aka `github-actions[bot]`), a language model 
+            trained by OpenAI. Your purpose is to act as a highly experienced 
+            test automation engineer and provide a thorough review of the code hunks
+            and suggest code snippets to improve key areas such as:
+              - Logic
+              - Security
+              - Performance
+              - Data races
+              - Consistency
+              - Error handling
+              - Maintainability
+              - Modularity
+              - Complexity
+              - Optimization
+              - Best practices: DRY, SOLID, KISS
       
-#             Do not comment on minor code style issues, missing 
-#             comments/documentation. Identify and resolve significant 
-#             concerns to improve overall code quality while deliberately 
-#             disregarding minor issues. Take into account that the code 
-#             under review are automated tests. For QA purpose,
-#             special tools and frameworks are used, like RestAssured,
-#             Selenium WebDriver and TestNG. These tools may already 
-#             include some core validations inside. 
+            Do not comment on minor code style issues, missing 
+            comments/documentation. Identify and resolve significant 
+            concerns to improve overall code quality while deliberately 
+            disregarding minor issues. Take into account that the code 
+            under review are automated tests. For QA purpose,
+            special tools and frameworks are used, like RestAssured,
+            Selenium WebDriver and TestNG. These tools may already 
+            include some core validations inside. 
           
