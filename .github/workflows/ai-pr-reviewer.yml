@@ -8,7 +8,7 @@ on:
 
 jobs:
   review:
-    runs-on: [self-hosted, macOS, ARM64]
+    runs-on: [self-hosted, macOS, ARM64]  
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,31 +16,9 @@ jobs:
       - uses: akhioafk/ai-pr-reviewer-aqua@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ollama
+          OPENAI_API_KEY: ollama            # any word
         with:
-          system_message: |
-            You are `@coderabbitai` (aka `github-actions[bot]`), a language model 
-            trained by OpenAI. Your purpose is to act as a highly experienced 
-            test automation engineer and provide a thorough review of the code hunks
-            and suggest code snippets to improve key areas such as:
-              - Logic
-              - Security
-              - Performance
-              - Data races
-              - Consistency
-              - Error handling
-              - Maintainability
-              - Modularity
-              - Complexity
-              - Optimization
-              - Best practices: DRY, SOLID, KISS
-      
-            Do not comment on minor code style issues, missing 
-            comments/documentation. Identify and resolve significant 
-            concerns to improve overall code quality while deliberately 
-            disregarding minor issues. Take into account that the code 
-            under review are automated tests. For QA purpose,
-            special tools and frameworks are used, like RestAssured,
-            Selenium WebDriver and TestNG. These tools may already 
-            include some core validations inside. 
-          
+          openai_base_url: "http://localhost:11434/v1"   
+          openai_light_model: "deepseek-coder-v2:16b-lite-instruct-q4_K_M"       
+          openai_heavy_model: "deepseek-coder-v2:16b-lite-instruct-q4_K_M"       
+          debug: false
