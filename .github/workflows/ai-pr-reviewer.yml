@@ -24,6 +24,8 @@ jobs:
 
           disable_release_notes: true     # removes release notes section
           summarize: ""                   # empty string means no summary
+          review_simple_changes: true
+          review_comment_lgtm: true
 
           debug: false
 
