@@ -1,5 +1,5 @@
 package aquality.selenium.template.configuration;
-
+// bla bla bla ble ble ble
 public class Configuration {
 
     private Configuration() {
@@ -13,3 +13,15 @@ public class Configuration {
         return Environment.getCurrentEnvironment().getValue("/apiUrl").toString();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
