@@ -18,6 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ollama            # any word
         with:
+          diffOnly: true
+
           openai_base_url: "http://localhost:11434/v1"
           openai_light_model: "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
           openai_heavy_model: "deepseek-coder-v2:16b-lite-instruct-q4_K_M"
